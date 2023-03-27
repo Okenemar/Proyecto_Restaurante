@@ -1,47 +1,86 @@
 package clases;
 
-import java.util.Date;
+import java.time.LocalDateTime;
 
-import org.apache.tomcat.jni.Time;
+
+
+
 
 public class Reserva {
-	private int nºreserva;
-	private Date fecha;
-	private Time hora;
+	private int nReserva;
+	private LocalDateTime fechaHora;
+	private Cliente cliente; //para el DNI del cliente
+	private Gerente gerente; //para el código de usuario
 	
-	public Reserva(int nºreserva, Date fecha, Time hora) {
+	public Reserva(int nReserva, LocalDateTime fechaHora, Cliente cliente, Gerente gerente) {
 		super();
-		this.nºreserva = nºreserva;
-		this.fecha = fecha;
-		this.hora = hora;
+		this.nReserva = nReserva;
+		this.fechaHora = fechaHora;
+		this.cliente = cliente;
+		this.gerente = gerente;
 	}
 	
 	public Reserva() {
 		
 	}
-	public int getNºreserva() {
-		return nºreserva;
+
+	public int getnReserva() {
+		return nReserva;
 	}
-	public void setNºreserva(int nºreserva) {
-		this.nºreserva = nºreserva;
+
+	public void setnReserva(int nReserva) {
+		this.nReserva = nReserva;
 	}
-	public Date getFecha() {
-		return fecha;
+
+	public LocalDateTime getFechaHora() {
+		return fechaHora;
 	}
-	public void setFecha(Date fecha) {
-		this.fecha = fecha;
+
+	public void setFechaHora(LocalDateTime fechaHora) {
+		this.fechaHora = fechaHora;
 	}
-	public Time getHora() {
-		return hora;
+
+	public Cliente getCliente() {
+		return cliente;
 	}
-	public void setHora(Time hora) {
-		this.hora = hora;
+
+	public void setCliente(Cliente cliente) {
+		this.cliente = cliente;
 	}
-	
+
+	public Gerente getGerente() {
+		return gerente;
+	}
+
+	public void setGerente(Gerente gerente) {
+		this.gerente = gerente;
+	}
+
 	@Override
 	public String toString() {
-		return "Reserva [nºreserva=" + nºreserva + ", fecha=" + fecha + ", hora=" + hora + "]";
+		return "Reserva [nReserva=" + nReserva + ", fechaHora=" + fechaHora + ", cliente=" + cliente + ", gerente="
+				+ gerente + "]";
 	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	
 }

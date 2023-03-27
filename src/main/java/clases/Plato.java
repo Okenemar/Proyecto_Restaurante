@@ -3,43 +3,77 @@ package clases;
 import java.util.ArrayList;
 
 public class Plato {
-	private int cªplato;
+	private int cplato;
 	private String nombre;
 	private Double precio;
 	private ArrayList<Producto> productos = new ArrayList<Producto>();
+	private Usuario usuario; //para el codigo del usuario
 	
-	public Plato(int cªplato, String nombre, Double precio, ArrayList<Producto> productos) {
+	public Plato(int cplato, String nombre, Double precio, ArrayList<Producto> productos, Usuario usuario) {
 		super();
-		this.cªplato = cªplato;
+		this.cplato = cplato;
 		this.nombre = nombre;
 		this.precio = precio;
 		this.productos = productos;
+		this.usuario = usuario;
 	}
+	
 	public Plato() {
 		
 	}
-	public int getCªplato() {
-		return cªplato;
+
+	public int getCplato() {
+		return cplato;
 	}
-	public void setCªplato(int cªplato) {
-		this.cªplato = cªplato;
+
+	public void setCplato(int cplato) {
+		this.cplato = cplato;
 	}
+
 	public String getNombre() {
 		return nombre;
 	}
+
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
+
 	public Double getPrecio() {
 		return precio;
 	}
+
 	public void setPrecio(Double precio) {
 		this.precio = precio;
 	}
-	
+
+	public ArrayList<Producto> getProductos() {
+		return productos;
+	}
+
+	public void setProductos(ArrayList<Producto> productos) {
+		this.productos = productos;
+	}
+
+	public Usuario getUsuario() {
+		return usuario;
+	}
+
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
+	}
+
 	@Override
 	public String toString() {
-		return "Plato [cªplato=" + cªplato + ", nombre=" + nombre + ", precio=" + precio + "]";
+		return "Plato [cplato=" + cplato + ", nombre=" + nombre + ", precio=" + precio + ", productos=" + productos
+				+ ", usuario=" + usuario + "]";
 	}
+	
+	
+	
+	
+	
+	
+	
+	
 	
 }
