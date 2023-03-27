@@ -1,13 +1,15 @@
 package clases;
 
-import java.sql.Date;
+import java.util.Date;
+
+import org.apache.tomcat.jni.Time;
 
 public class Reserva {
 	private int nºreserva;
 	private Date fecha;
-	private Date hora;
+	private Time hora;
 	
-	public Reserva(int nºreserva, Date fecha, Date hora) {
+	public Reserva(int nºreserva, Date fecha, Time hora) {
 		super();
 		this.nºreserva = nºreserva;
 		this.fecha = fecha;
@@ -29,10 +31,10 @@ public class Reserva {
 	public void setFecha(Date fecha) {
 		this.fecha = fecha;
 	}
-	public Date getHora() {
+	public Time getHora() {
 		return hora;
 	}
-	public void setHora(Date hora) {
+	public void setHora(Time hora) {
 		this.hora = hora;
 	}
 	
