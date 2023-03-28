@@ -14,10 +14,13 @@
 
 <form method="POST" action="AñadirReserva">
 		
-		<p>NºReserva:
-		
-		<p>Fecha:
-		<input type="date" name="fecha" /> <br></p>
+		<p>DNI:
+		<input type="text" name="DNI" /> <br></p>
+		<p>Nombre:
+		<input type="text" name="Nombre" /> <br></p>
+		<br>
+		<p>Telefono:
+		<input type="text" name="Nombre" /> <br></p>
 		<br>
 		<p>Hora:
 		<input type="time" name="hora" /> <br></p>
