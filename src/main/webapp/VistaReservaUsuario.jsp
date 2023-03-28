@@ -1,4 +1,4 @@
-<%@ page import="clases.Reserva" %>
+
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
@@ -9,7 +9,7 @@
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 </head>
 <body>
-<% Reserva reserva = (Reserva) request.getAttribute("reserva"); %>
+
 <h1 class="fw-bold" > Realizar Reserva</h1>
 
 <form method="POST" action="AñadirReserva">
@@ -20,13 +20,13 @@
 		<input type="text" name="Nombre" /> <br></p>
 		<br>
 		<p>Telefono:
-		<input type="text" name="Nombre" /> <br></p>
+		<input type="text" name="Telefono" /> <br></p>
 		<br>
-		<p>Hora:
-		<input type="time" name="hora" /> <br></p>
+		<p>Fecha/hora:
+		<input type="datetime-local" name="hora" /> <br></p>
 		<br>
 		<br>
-		<input type="submit" class="btn btn-secondary" value="Guardar"/>
+		<input type="submit" class="btn btn-secondary" value="Reservar"/>
 	
 	
 </form>
