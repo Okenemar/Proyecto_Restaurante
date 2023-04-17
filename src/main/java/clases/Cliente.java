@@ -12,13 +12,14 @@ public class Cliente {
 	private RolUsuario rol;
 	
 	
-	public Cliente(String dni, String nombre, String apellido, String telefono, String correo) {
+	public Cliente(String dni, String nombre, String apellido, String telefono, String correo, RolUsuario rol) {
 		super();
 		this.dni = dni;
 		this.nombre = nombre;
 		this.apellido = apellido;
 		this.telefono = telefono;
 		this.correo = correo;
+		this.rol = rol;
 	}
 	
 	public Cliente() {
@@ -55,12 +56,21 @@ public class Cliente {
 		this.correo = correo;
 	}
 
+	public RolUsuario getRol() {
+		return rol;
+	}
+
+	public void setRol(RolUsuario rol) {
+		this.rol = rol;
+	}
+
+	
 	@Override
 	public String toString() {
 		return "Cliente [dni=" + dni + ", nombre=" + nombre + ", apellido=" + apellido + ", telefono=" + telefono
-				+ ", correo=" + correo + "]";
+				+ ", correo=" + correo + ", rol=" + rol + "]";
 	}
-	
+
 	public void anadirReserva() {
 		
 	}
