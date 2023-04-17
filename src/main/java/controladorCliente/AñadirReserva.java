@@ -74,8 +74,12 @@ public class AñadirReserva extends HttpServlet {
 		//comprobar que el cliente existe
 		
 		clienteM.conectar();
-		clienteM.registrarCliente(cliente);
 		
+		Boolean encontado=clienteM.DNIExiste(DNI);
+		
+		if (encontado==false) {
+			clienteM.registrarCliente(cliente);
+		}
 		
 		reserva.setCliente(cliente);
 		

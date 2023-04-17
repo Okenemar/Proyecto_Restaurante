@@ -2,7 +2,7 @@ package modeloCliente;
 
 
 import java.sql.PreparedStatement;
-
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Date;
 
@@ -34,6 +34,35 @@ public class ModeloCliente extends Conector{
 		
 		
 	}
+	
+	public boolean DNIExiste (String DNI) {
+		
+		Boolean encontrado =false;
+		PreparedStatement prt;
+		try {
+			prt=con.prepareStatement("SELECT DNI FROM clientes WHERE DNI=?");
+			
+			prt.setString(1, DNI);
+			
+			ResultSet resultado = prt.executeQuery();
+			
+			if (resultado.next()) {
+				encontrado =true;
+			} else {
+				encontrado= false;
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return encontrado;
+		
+		
+	}
+	
+	
+	
 	public void crearReserva(Reserva reserva) {
 		
 		PreparedStatement prt;
@@ -58,4 +87,6 @@ public class ModeloCliente extends Conector{
 		
 		
 	}
+	
+	
 }
