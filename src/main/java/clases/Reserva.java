@@ -1,6 +1,7 @@
 package clases;
 
-import java.time.LocalDateTime;
+
+import java.util.Date;
 
 
 
@@ -8,16 +9,16 @@ import java.time.LocalDateTime;
 
 public class Reserva {
 	private int nReserva;
-	private LocalDateTime fechaHora;
+	private Date fecha;
 	private Cliente cliente; //para el DNI del cliente
-	private Gerente gerente; //para el código de usuario
+	private Usuario codigoUsurio; //para el código de usuario
 	
-	public Reserva(int nReserva, LocalDateTime fechaHora, Cliente cliente, Gerente gerente) {
+	public Reserva(int nReserva, Date fecha, Cliente cliente, Usuario codigoUsurio) {
 		super();
 		this.nReserva = nReserva;
-		this.fechaHora = fechaHora;
+		this.fecha = fecha;
 		this.cliente = cliente;
-		this.gerente = gerente;
+		this.codigoUsurio = codigoUsurio;
 	}
 	
 	public Reserva() {
@@ -32,12 +33,12 @@ public class Reserva {
 		this.nReserva = nReserva;
 	}
 
-	public LocalDateTime getFechaHora() {
-		return fechaHora;
+	public Date getFecha() {
+		return fecha;
 	}
 
-	public void setFechaHora(LocalDateTime fechaHora) {
-		this.fechaHora = fechaHora;
+	public void setFecha(Date fecha) {
+		this.fecha = fecha;
 	}
 
 	public Cliente getCliente() {
@@ -48,19 +49,22 @@ public class Reserva {
 		this.cliente = cliente;
 	}
 
-	public Gerente getGerente() {
-		return gerente;
+	public Usuario getCodigoUsurio() {
+		return codigoUsurio;
 	}
 
-	public void setGerente(Gerente gerente) {
-		this.gerente = gerente;
+	public void setCodigoUsurio(Usuario codigoUsurio) {
+		this.codigoUsurio = codigoUsurio;
 	}
 
 	@Override
 	public String toString() {
-		return "Reserva [nReserva=" + nReserva + ", fechaHora=" + fechaHora + ", cliente=" + cliente + ", gerente="
-				+ gerente + "]";
+		return "Reserva [nReserva=" + nReserva + ", fecha=" + fecha + ", cliente=" + cliente + ", codigoUsurio="
+				+ codigoUsurio + "]";
 	}
+	
+	
+	
 	
 	
 	

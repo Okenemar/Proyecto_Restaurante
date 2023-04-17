@@ -1,6 +1,6 @@
 package clases;
 
-public abstract class Usuario {
+public class Usuario {
 	
 	private int cUsuario;
 	private String nombre;
@@ -9,9 +9,10 @@ public abstract class Usuario {
 	private String correoTrabajo;
 	private String trabajo;
 	private int mgr;
+	private RolUsuario rol;
 	
 	public Usuario(int cUsuario, String nombre, String apellido, String telefono, String correoTrabajo, String trabajo,
-			int mgr) {
+			int mgr, RolUsuario rol) {
 		super();
 		this.cUsuario = cUsuario;
 		this.nombre = nombre;
@@ -20,6 +21,7 @@ public abstract class Usuario {
 		this.correoTrabajo = correoTrabajo;
 		this.trabajo = trabajo;
 		this.mgr = mgr;
+		this.rol = rol;
 	}
 	
 	public Usuario() {
@@ -82,11 +84,22 @@ public abstract class Usuario {
 		this.mgr = mgr;
 	}
 
+	public RolUsuario getRol() {
+		return rol;
+	}
+
+	public void setRol(RolUsuario rol) {
+		this.rol = rol;
+	}
+
 	@Override
 	public String toString() {
 		return "Usuario [cUsuario=" + cUsuario + ", nombre=" + nombre + ", apellido=" + apellido + ", telefono="
-				+ telefono + ", correoTrabajo=" + correoTrabajo + ", trabajo=" + trabajo + ", mgr=" + mgr + "]";
+				+ telefono + ", correoTrabajo=" + correoTrabajo + ", trabajo=" + trabajo + ", mgr=" + mgr + ", rol="
+				+ rol + "]";
 	}
+	
+	
 	
 	
 	

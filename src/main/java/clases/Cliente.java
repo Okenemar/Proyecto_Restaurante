@@ -9,6 +9,7 @@ public class Cliente {
 	private String apellido;
 	private String telefono;
 	private String correo;
+	private RolUsuario rol;
 	
 	
 	public Cliente(String dni, String nombre, String apellido, String telefono, String correo) {

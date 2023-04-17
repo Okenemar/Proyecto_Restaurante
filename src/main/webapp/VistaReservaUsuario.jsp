@@ -1,6 +1,8 @@
 
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+ <%@ taglib prefix="c" uri = "http://java.sun.com/jsp/jstl/core" %>
+ 
 <!DOCTYPE html>
 <html>
 <head>
@@ -22,8 +24,8 @@
 		<p>Telefono:
 		<input type="text" name="Telefono" /> <br></p>
 		<br>
-		<p>Fecha/hora:
-		<input type="datetime-local" name="hora" /> <br></p>
+		<p>Fecha:
+		<input type="date" name="Fecha" /> <br></p>
 		<br>
 		<br>
 		<input type="submit" class="btn btn-secondary" value="Reservar"/>
