@@ -13,7 +13,9 @@ import javax.servlet.http.HttpServletResponse;
 
 import clases.Cliente;
 import clases.Reserva;
+
 import modeloCliente.ModeloCliente;
+
 
 /**
  * Servlet implementation class AñadirReserva
@@ -42,12 +44,16 @@ public class AñadirReserva extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
 		Reserva reserva = new Reserva();
 		ModeloCliente clienteM = new ModeloCliente();
 		
+		
 		String DNI = request.getParameter("DNI");
 		String Nombre = request.getParameter("Nombre");
+		String Apellido = request.getParameter("Apellido");
 		String Telefono = request.getParameter("Telefono");
+		String Correo = request.getParameter("Correo");
 		SimpleDateFormat formatFecha = new SimpleDateFormat ("yyyy-MM-dd");
 		
 		try {
@@ -59,17 +65,26 @@ public class AñadirReserva extends HttpServlet {
 		}
 		
 		Cliente cliente = new Cliente();
+		
 		cliente.setDni(DNI);
 		cliente.setNombre(Nombre);
+		cliente.setApellido(Apellido);
 		cliente.setTelefono(Telefono);
+		cliente.setCorreo(Correo);
+		//comprobar que el cliente existe
+		
+		clienteM.conectar();
+		clienteM.registrarCliente(cliente);
+		
+		
 		reserva.setCliente(cliente);
 		
 		
-		clienteM.conectar();
-		
 		clienteM.crearReserva(reserva);
 		
+		
 		clienteM.cerrar();
+		
 		
 		
 		
