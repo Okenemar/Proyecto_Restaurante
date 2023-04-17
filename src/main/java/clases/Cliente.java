@@ -9,7 +9,7 @@ public class Cliente {
 	private String apellido;
 	private String telefono;
 	private String correo;
-	
+	private RolUsuario rol;
 	
 	
 	public Cliente(String dni, String nombre, String apellido, String telefono, String correo) {
@@ -19,7 +19,6 @@ public class Cliente {
 		this.apellido = apellido;
 		this.telefono = telefono;
 		this.correo = correo;
-		
 	}
 	
 	public Cliente() {
@@ -56,15 +55,12 @@ public class Cliente {
 		this.correo = correo;
 	}
 
-	
-
-	
 	@Override
 	public String toString() {
 		return "Cliente [dni=" + dni + ", nombre=" + nombre + ", apellido=" + apellido + ", telefono=" + telefono
 				+ ", correo=" + correo + "]";
 	}
-
+	
 	public void anadirReserva() {
 		
 	}
