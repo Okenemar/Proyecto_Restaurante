@@ -61,6 +61,42 @@ public class ModeloCliente extends Conector{
 		
 	}
 	
+	public Cliente getCliente (String DNI) {
+		Cliente cliente = new Cliente();
+		
+		PreparedStatement prt;
+		
+		try {
+			prt=con.prepareStatement("SELECT nombre,Apellido,telefono,correo FROM clientes WHERE DNI=?");
+		
+			prt.setString(1, DNI);
+			
+			ResultSet resultado = prt.executeQuery();
+			
+			if (resultado.next()) {
+				cliente.setDni(DNI);
+				cliente.setNombre(resultado.getString("nombre"));
+				cliente.setApellido(resultado.getString("Apellido"));
+				cliente.setTelefono(resultado.getString("telefono"));
+				cliente.setCorreo(resultado.getString("correo"));
+				
+			}
+		
+		
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	
+		
+	
+		return cliente;
+	
+	}
+	
+	
+	
+	
 	
 	
 	public void crearReserva(Reserva reserva) {

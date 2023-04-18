@@ -13,21 +13,28 @@
 
 <h1 class="fw-bold" > Realizar Reserva</h1>
 
+
+		<form method="get" action="CargarUsuario">
+			<p>DNI:
+			<input type="text" name="DNI" value="${cliente.dni}"/>
+			<input type="submit" class="btn-primary" value="Buscar"> 
+			</p>
+		</form> 
+
 <form method="POST" action="AñadirReserva">
 		
-		<p>DNI:
-		<input type="text" name="DNI" /> <br></p>
+		
 		<p>Nombre:
-		<input type="text" name="Nombre" /> <br></p>
+		<input type="text" name="Nombre"  value="${cliente.nombre}"/> <br> </p>
 		<br>
 		<p>Apellido:
-		<input type="text" name="Apellido" /> <br></p>
+		<input type="text" name="Apellido" value="${cliente.apellido}"/> <br></p>
 		<br>
 		<p>Telefono:
-		<input type="text" name="Telefono" /> <br></p>
+		<input type="text" name="Telefono" value="${cliente.telefono}"/> <br></p>
 		<br>
 		<p>Correo:
-		<input type="text" name="Correo" /> <br></p>
+		<input type="text" name="Correo"  value="${cliente.correo}"/> <br></p>
 		<br>
 		<p>Fecha:
 		<input type="date" name="Fecha" /> <br></p>
@@ -37,7 +44,7 @@
 	
 	
 </form>
-
+		
 		<a href="VerUsuarios" class="btn btn-primary">Volver</a>	
 
 </body>
