@@ -34,7 +34,9 @@ public class CargarUsuario extends HttpServlet {
 		String DNI = request.getParameter("DNI");
 		
 		clienteM.conectar();
+		
 		cliente = clienteM.getCliente(DNI);
+		
 		
 		clienteM.cerrar();
 		

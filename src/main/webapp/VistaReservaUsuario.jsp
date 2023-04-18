@@ -18,15 +18,17 @@
 
 
 		<form method="get" action="CargarUsuario">
-			<p>DNI:
-			<input type="text" name="DNI" value="${cliente.dni}"/>
+			<p>Buscar dni
+			<input type="text" name="DNI"/>
 			<input type="submit" class="btn-primary" value="Buscar"> 
 			</p>
 		</form> 
 
 <form method="POST" action="AñadirReserva">
 		
-		
+		<p>DNI:
+		<input type="text" name="DNI"  value="${cliente.dni}"/><br>
+		</p> 
 		<p>Nombre:
 		<input type="text" name="Nombre"  value="${cliente.nombre}"/> <br> </p>
 		<br>

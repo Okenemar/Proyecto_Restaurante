@@ -49,7 +49,7 @@ public class AñadirReserva extends HttpServlet {
 		ModeloCliente clienteM = new ModeloCliente();
 		
 		
-		String DNI = request.getParameter("DNI");
+		String DNI = request.getParameter("DNI2");
 		String Nombre = request.getParameter("Nombre");
 		String Apellido = request.getParameter("Apellido");
 		String Telefono = request.getParameter("Telefono");
@@ -78,6 +78,7 @@ public class AñadirReserva extends HttpServlet {
 		Boolean encontado=clienteM.DNIExiste(DNI);
 		
 		if (encontado==false) {
+			
 			clienteM.registrarCliente(cliente);
 		}
 		
