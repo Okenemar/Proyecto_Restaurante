@@ -9,9 +9,12 @@
 <title>Insert title here</title>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 </head>
-<body>
-
-<h1 class="fw-bold" > Realizar Reserva</h1>
+<body >
+<div class="container">
+	<h1 class="fw-bold" style="margin-left:280px;" > GESTIONES RESERVAS</h1>
+<div class="row 2" >
+<div class="col-6" >
+	<h1 class="fw-bold" > Realizar Reserva</h1>
 
 
 		<form method="get" action="CargarUsuario">
@@ -46,6 +49,50 @@
 </form>
 		
 		<a href="VerUsuarios" class="btn btn-primary">Volver</a>	
+</div>
+
+
+<div class="col-6" >
+			<h1 class="fw-bold" > Ver Reservas</h1>
+
+<form method="get" action="VerReservas" >
+			<p>DNI:
+			<input type="text" name="DNI" value="${reserva.cliente.dni}"/>
+			<input type="submit" class="btn-primary" value="Buscar"> 
+			</p>
+</form> 	
+<table class="table">
+	
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">nReserva</th>
+      <th scope="col">Fecha</th>
+      
+     
+    </tr>
+  </thead>
+  <tbody>
+    
+     <c:forEach items="${reservas}" var="reserva">
+    <tr>
+      <th scope="row"></th>
+      <td>${reserva.nReserva}</td>
+      <td>${reserva.fecha}</td>
+      
+      
+      
+    </tr>
+    
+    </c:forEach>
+    
+    
+  </tbody>
+</table>
+		
+</div>
+</div>
+</div>
 
 </body>
 </html>

@@ -4,6 +4,7 @@ package modeloCliente;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.sql.Date;
 
 import clases.Cliente;
@@ -123,6 +124,49 @@ public class ModeloCliente extends Conector{
 		
 		
 	}
+
+
+		public ArrayList<Reserva> getReservasUsuario(String DNI){
+
+		PreparedStatement prt;
+
+		ArrayList <Reserva> reservas = new ArrayList<>();
+
+		Reserva reserva = new Reserva();
+
+		try {
+
+		prt = con.prepareStatement("SELECT * FROM reservas WHERE DNI=?");
+		
+		prt.setString(1, DNI);
+
+		ResultSet resultado = prt.executeQuery();
+
+		while(resultado.next()) {
+
+		reserva = new Reserva();
+
+		reserva.setnReserva(resultado.getInt(1));
+
+		reserva.setFecha(resultado.getDate(2));
+
+		reserva.setCliente(getCliente(resultado.getString(4)));
+		
+		reservas.add(reserva);
+
+		}
+
+		} catch (SQLException e) {
+
+		e.printStackTrace();
+
+		}
+
+		return reservas;
+
+		}
+
+
 	
 	
 }
