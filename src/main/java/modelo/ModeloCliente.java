@@ -1,4 +1,4 @@
-package modeloCliente;
+package modelo;
 
 
 import java.sql.PreparedStatement;

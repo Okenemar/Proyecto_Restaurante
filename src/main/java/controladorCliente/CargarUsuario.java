@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import clases.Cliente;
-import modeloCliente.ModeloCliente;
+import modelo.ModeloCliente;
 
 /**
  * Servlet implementation class CargarUsuario

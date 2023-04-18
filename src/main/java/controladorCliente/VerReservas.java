@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 
 import clases.Reserva;
-import modeloCliente.ModeloCliente;
+import modelo.ModeloCliente;
 
 /**
  * Servlet implementation class VerReservas
