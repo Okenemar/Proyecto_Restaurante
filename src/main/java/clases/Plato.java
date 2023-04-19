@@ -7,15 +7,15 @@ public class Plato {
 	private String nombre;
 	private Double precio;
 	private ArrayList<Producto> productos = new ArrayList<Producto>();
-	private Usuario usuario; //para el codigo del usuario
 	
-	public Plato(int cplato, String nombre, Double precio, ArrayList<Producto> productos, Usuario usuario) {
+	
+	public Plato(int cplato, String nombre, Double precio, ArrayList<Producto> productos) {
 		super();
 		this.cplato = cplato;
 		this.nombre = nombre;
 		this.precio = precio;
 		this.productos = productos;
-		this.usuario = usuario;
+		
 	}
 	
 	public Plato() {
@@ -54,18 +54,12 @@ public class Plato {
 		this.productos = productos;
 	}
 
-	public Usuario getUsuario() {
-		return usuario;
-	}
-
-	public void setUsuario(Usuario usuario) {
-		this.usuario = usuario;
-	}
+	
 
 	@Override
 	public String toString() {
 		return "Plato [cplato=" + cplato + ", nombre=" + nombre + ", precio=" + precio + ", productos=" + productos
-				+ ", usuario=" + usuario + "]";
+				+  "]";
 	}
 	
 	
