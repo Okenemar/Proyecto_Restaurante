@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import clases.Producto;
-import modelo.ModeloUsuarioP;
+import modelo.ModeloUsuarioPr;
 
 /**
  * Servlet implementation class ModificarProducto
@@ -32,7 +32,7 @@ public class ModificarProducto extends HttpServlet {
 		// TODO Auto-generated method stub
 		int cProducto = Integer.parseInt(request.getParameter("cProducto"));
 		
-		ModeloUsuarioP usuarioM = new ModeloUsuarioP();
+		ModeloUsuarioPr usuarioM = new ModeloUsuarioPr();
 		usuarioM.conectar();
 		
 		Producto producto = usuarioM.getProducto(cProducto);
@@ -68,7 +68,7 @@ public class ModificarProducto extends HttpServlet {
 		producto.setPrecio(precio);
 		
 		
-		ModeloUsuarioP usuarioM = new ModeloUsuarioP();
+		ModeloUsuarioPr usuarioM = new ModeloUsuarioPr();
 		usuarioM.conectar();
 		
 		usuarioM.modificarProducto(producto);

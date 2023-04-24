@@ -3,31 +3,29 @@ package clases;
 import java.util.ArrayList;
 
 public class Plato {
-	private int cplato;
+	private int cPlato;
 	private String nombre;
 	private Double precio;
 	private ArrayList<Producto> productos = new ArrayList<Producto>();
 	
-	
-	public Plato(int cplato, String nombre, Double precio, ArrayList<Producto> productos) {
+	public Plato(int cPlato, String nombre, Double precio, ArrayList<Producto> productos) {
 		super();
-		this.cplato = cplato;
+		this.cPlato = cPlato;
 		this.nombre = nombre;
 		this.precio = precio;
 		this.productos = productos;
-		
 	}
 	
 	public Plato() {
 		
 	}
 
-	public int getCplato() {
-		return cplato;
+	public int getcPlato() {
+		return cPlato;
 	}
 
-	public void setCplato(int cplato) {
-		this.cplato = cplato;
+	public void setcPlato(int cPlato) {
+		this.cPlato = cPlato;
 	}
 
 	public String getNombre() {
@@ -54,19 +52,11 @@ public class Plato {
 		this.productos = productos;
 	}
 
-	
-
 	@Override
 	public String toString() {
-		return "Plato [cplato=" + cplato + ", nombre=" + nombre + ", precio=" + precio + ", productos=" + productos
-				+  "]";
+		return "Plato [cPlato=" + cPlato + ", nombre=" + nombre + ", precio=" + precio + ", productos=" + productos
+				+ "]";
 	}
-	
-	
-	
-	
-	
-	
 	
 	
 	

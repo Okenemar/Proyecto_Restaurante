@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import clases.Producto;
-import modelo.ModeloUsuarioP;
+import modelo.ModeloUsuarioPr;
 
 /**
  * Servlet implementation class VerProducto
@@ -33,7 +33,7 @@ public class VerProducto extends HttpServlet {
 		int cProducto = Integer.parseInt(request.getParameter("cProducto"));
 		
 			
-			ModeloUsuarioP usuarioM = new ModeloUsuarioP();
+			ModeloUsuarioPr usuarioM = new ModeloUsuarioPr();
 			
 			usuarioM.conectar();
 			

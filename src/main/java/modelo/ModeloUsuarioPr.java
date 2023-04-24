@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import clases.Producto;
 import conexion.Conector;
 
-public class ModeloUsuarioP extends Conector {
+public class ModeloUsuarioPr extends Conector {
 
 	
 

@@ -1,4 +1,4 @@
-package controladorUsuarioPr;
+package controladorUsuarioPl;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -9,20 +9,21 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import clases.Plato;
 import clases.Producto;
-import modelo.ModeloUsuarioPr;
+import modelo.ModeloUsuarioPl;
 
 /**
- * Servlet implementation class VerProductos
+ * Servlet implementation class VerPlato
  */
-@WebServlet("/VerProductos")
-public class VerProductos extends HttpServlet {
+@WebServlet("/VerPlato")
+public class VerPlato extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public VerProductos() {
+    public VerPlato() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -31,20 +32,25 @@ public class VerProductos extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-		ModeloUsuarioPr usuarioM = new ModeloUsuarioPr();
 		
-		ArrayList <Producto> productos = new ArrayList <>();
+		int cPlato = Integer.parseInt(request.getParameter("cPlato"));
+		Plato plato = new Plato();
+		ArrayList <Producto> productos = new ArrayList<>();
+		
+		ModeloUsuarioPl usuarioM = new ModeloUsuarioPl();
 		
 		usuarioM.conectar();
 		
-		productos = usuarioM.getProductos();
+		productos =usuarioM.getProductosPlato(cPlato);
+		plato = usuarioM.getPlato(cPlato);
+		
 		
 		usuarioM.cerrar();
 		
 		request.setAttribute("productos", productos);
+		request.setAttribute("plato", plato);
 		
-		request.getRequestDispatcher("VistaProductos.jsp").forward(request, response);
+		request.getRequestDispatcher("VistaPlato.jsp").forward(request, response);
 		
 		
 	}

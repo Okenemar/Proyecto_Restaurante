@@ -7,7 +7,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import modelo.ModeloUsuarioP;
+import modelo.ModeloUsuarioPr;
 
 /**
  * Servlet implementation class EliminarProducto
@@ -31,7 +31,7 @@ public class EliminarProducto extends HttpServlet {
 		
 		int cProducto = Integer.parseInt(request.getParameter("cProducto"));
 		
-		ModeloUsuarioP usuarioM = new ModeloUsuarioP();
+		ModeloUsuarioPr usuarioM = new ModeloUsuarioPr();
 		usuarioM.conectar();
 		
 		usuarioM.eliminarProducto(cProducto);
