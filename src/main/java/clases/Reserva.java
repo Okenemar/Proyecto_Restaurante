@@ -11,14 +11,13 @@ public class Reserva {
 	private int nReserva;
 	private Date fecha;
 	private Cliente cliente; //para el DNI del cliente
-	private Usuario codigoUsurio; //para el código de usuario
 	
-	public Reserva(int nReserva, Date fecha, Cliente cliente, Usuario codigoUsurio) {
+	public Reserva(int nReserva, Date fecha, Cliente cliente) {
 		super();
 		this.nReserva = nReserva;
 		this.fecha = fecha;
 		this.cliente = cliente;
-		this.codigoUsurio = codigoUsurio;
+		
 	}
 	
 	public Reserva() {
@@ -49,18 +48,9 @@ public class Reserva {
 		this.cliente = cliente;
 	}
 
-	public Usuario getCodigoUsurio() {
-		return codigoUsurio;
-	}
-
-	public void setCodigoUsurio(Usuario codigoUsurio) {
-		this.codigoUsurio = codigoUsurio;
-	}
-
 	@Override
 	public String toString() {
-		return "Reserva [nReserva=" + nReserva + ", fecha=" + fecha + ", cliente=" + cliente + ", codigoUsurio="
-				+ codigoUsurio + "]";
+		return "Reserva [nReserva=" + nReserva + ", fecha=" + fecha + ", cliente=" + cliente + "]";
 	}
 	
 	

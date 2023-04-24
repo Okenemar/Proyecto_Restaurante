@@ -9,17 +9,15 @@ public class Cliente {
 	private String apellido;
 	private String telefono;
 	private String correo;
-	private RolUsuario rol;
 	
 	
-	public Cliente(String dni, String nombre, String apellido, String telefono, String correo, RolUsuario rol) {
+	public Cliente(String dni, String nombre, String apellido, String telefono, String correo) {
 		super();
 		this.dni = dni;
 		this.nombre = nombre;
 		this.apellido = apellido;
 		this.telefono = telefono;
 		this.correo = correo;
-		this.rol = rol;
 	}
 	
 	public Cliente() {
@@ -56,19 +54,12 @@ public class Cliente {
 		this.correo = correo;
 	}
 
-	public RolUsuario getRol() {
-		return rol;
-	}
-
-	public void setRol(RolUsuario rol) {
-		this.rol = rol;
-	}
 
 	
 	@Override
 	public String toString() {
 		return "Cliente [dni=" + dni + ", nombre=" + nombre + ", apellido=" + apellido + ", telefono=" + telefono
-				+ ", correo=" + correo + ", rol=" + rol + "]";
+				+ ", correo=" + correo + "]";
 	}
 
 	public void anadirReserva() {
