@@ -52,7 +52,7 @@ public class ModeloUsuario extends Conector{
 				
 				prt.setInt(1, evento.getcEvento());
 				prt.setString(2, evento.getNombre());
-				prt.setDate(3, evento.getFecha());
+				prt.setDate(3, new Date(evento.getFecha().getTime()));
 				prt.setInt(4, evento.getUsuario().getcUsuario());
 				prt.setInt(5, evento.getcEvento());
 			} catch (Exception e) {
@@ -60,29 +60,25 @@ public class ModeloUsuario extends Conector{
 			}
 		}
 		
+		public Evento getEvento(int cEvento) throws SQLException {
+			Evento evento = new Evento();
+			
+			prt=con.prepareStatement("SELECT * FROM evento WHERE cEvento=?");
+			prt.setInt(1, cEvento);
+			
+			ResultSet resultado = prt.executeQuery();
+			resultado.next();
+			
+			evento.setcEvento(resultado.getInt("cEvento"));
+			evento.setNombre(resultado.getString("nombre"));
+			evento.setFecha(resultado.getDate("fecha"));
+			evento.setUsuario(getUsuario(resultado.getInt("cUsuario")));
+			
+			return evento;
+		}
 		
-		
-//public void modificarUsuario(Usuario usuario) {
-//			
-//			try {
-//				 prt = con.prepareStatement("UPDATE usuarios SET cUsuario=?,nombre=?,apellido=?,telefono=?,correo_trabajo=?,trabajo=?,mgr=?,rol=? WHERE cUsuario=?");
-//				 
-//				 prt.setInt(1, usuario.getcUsuario());
-//				 prt.setString(2, usuario.getNombre());
-//				 prt.setString(3, usuario.getApellido());
-//				 prt.setString(4, usuario.getTelefono());
-//				 prt.setString(5, usuario.getCorreoTrabajo());
-//				 prt.setString(6, usuario.getTrabajo());
-//				 prt.setInt(7, usuario.getMgr());
-//				 prt.setInt(8, usuario.getRol().getId());
-//				 prt.setInt(9, usuario.getcUsuario());
-//				 
-//				 prt.executeUpdate();
-//			} catch (Exception e) {
-//				// TODO: handle exception
-//			}
-//			
-//		}
+
+	
 		public void insertarUsuario(Usuario usuario) {
 			try {
 				prt = con.prepareStatement("INSERT INTO usuario (cUsuario, nombre, apellido, telefono, correo_trabajo, trabajo, mgr, rol) VALUES(?,?,?,?,?,?,?,?)");
@@ -102,6 +98,7 @@ public class ModeloUsuario extends Conector{
 			}
 			
 		}
+		
 		public ArrayList<Usuario> getUsuarios(){
 			PreparedStatement prt;
 			ArrayList <Usuario> usuarios = new ArrayList <>();
@@ -215,7 +212,7 @@ public class ModeloUsuario extends Conector{
 			return reserva;
 			
 	}
-//	
+
 	
 	
 		public void modificarReserva(Reserva reserva) {
