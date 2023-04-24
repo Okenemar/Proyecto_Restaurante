@@ -23,11 +23,66 @@ public class ModeloUsuario extends Conector{
 				
 				prt.setInt(1, evento.getcEvento());
 				prt.setString(2, evento.getNombre());
-				prt.setDate(3, evento.getFecha());
+				prt.setDate(3, new Date (evento.getFecha().getTime()));
+				prt.setInt(4, evento.getUsuario().getcUsuario());
+				
+				prt.execute();
+				
 			} catch (Exception e) {
 				// TODO: handle exception
 			}
 		}
+		
+		public void eliminarEvento(int cEvento) {
+			try {
+				prt = con.prepareStatement("DELETE FROM evento WHERE cEvento = ?");
+				
+				prt.setInt(1, cEvento);
+
+				prt.execute();
+			} catch (Exception e) {
+				// TODO: handle exception
+			}
+			
+		}
+		
+		public void modificarEvento(Evento evento) {
+			try {
+				prt = con.prepareStatement("UPDATE evento SET cEvento=?, nombre=?, fecha=?, cUsuario=? WHERE cEvento=?");
+				
+				prt.setInt(1, evento.getcEvento());
+				prt.setString(2, evento.getNombre());
+				prt.setDate(3, evento.getFecha());
+				prt.setInt(4, evento.getUsuario().getcUsuario());
+				prt.setInt(5, evento.getcEvento());
+			} catch (Exception e) {
+				// TODO: handle exception
+			}
+		}
+		
+		
+		
+//public void modificarUsuario(Usuario usuario) {
+//			
+//			try {
+//				 prt = con.prepareStatement("UPDATE usuarios SET cUsuario=?,nombre=?,apellido=?,telefono=?,correo_trabajo=?,trabajo=?,mgr=?,rol=? WHERE cUsuario=?");
+//				 
+//				 prt.setInt(1, usuario.getcUsuario());
+//				 prt.setString(2, usuario.getNombre());
+//				 prt.setString(3, usuario.getApellido());
+//				 prt.setString(4, usuario.getTelefono());
+//				 prt.setString(5, usuario.getCorreoTrabajo());
+//				 prt.setString(6, usuario.getTrabajo());
+//				 prt.setInt(7, usuario.getMgr());
+//				 prt.setInt(8, usuario.getRol().getId());
+//				 prt.setInt(9, usuario.getcUsuario());
+//				 
+//				 prt.executeUpdate();
+//			} catch (Exception e) {
+//				// TODO: handle exception
+//			}
+//			
+//		}
 		public void insertarUsuario(Usuario usuario) {
 			try {
 				prt = con.prepareStatement("INSERT INTO usuario (cUsuario, nombre, apellido, telefono, correo_trabajo, trabajo, mgr, rol) VALUES(?,?,?,?,?,?,?,?)");
@@ -119,7 +174,7 @@ public class ModeloUsuario extends Conector{
 		public void modificarUsuario(Usuario usuario) {
 			
 			try {
-				 prt = con.prepareStatement("UPDATE usuarios SET cUsuario=?,nombre=?,apellido=?,telefono=?,correo_trabajo=?,trabajo=?,mgr=?,rol=? WHERE cUsuario=?");
+				 prt = con.prepareStatement("UPDATE usuario SET cUsuario=?,nombre=?,apellido=?,telefono=?,correo_trabajo=?,trabajo=?,mgr=?,rol=? WHERE cUsuario=?");
 				 
 				 prt.setInt(1, usuario.getcUsuario());
 				 prt.setString(2, usuario.getNombre());
