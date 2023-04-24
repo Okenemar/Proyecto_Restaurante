@@ -7,112 +7,136 @@ import java.util.ArrayList;
 import java.sql.Date;
 
 import clases.Cliente;
+import clases.Evento;
 import clases.Reserva;
 import clases.Usuario;
+import clases.RolUsuario;
 import conexion.Conector;
 
 public class ModeloUsuario extends Conector{
 	
 	PreparedStatement prt;
-//
-//		public void insertarUsuario(Usuario usuario) {
-//			try {
-//				prt = con.prepareStatement("INSERT INTO usuarios (nombre, password, login_fecha, id_rol) VALUES(?,?,?,?)");
-//				
-//				prt.setString(1, usuario.getNombre());
-//				prt.setString(2, usuario.getPassword());
-//				prt.setDate(3, new Date(usuario.getLogin_fecha().getTime()));
-//				prt.setInt(4, usuario.getRol().getId());
-//				prt.execute();
-//			} catch (Exception e) {
-//				// TODO: handle exception
-//			}
-//			
-//		}
-//		public ArrayList<Usuario> getUsuarios(){
-//			PreparedStatement prt;
-//			ArrayList <Usuario> usuarios = new ArrayList <>();
-//			Usuario usuario = new Usuario();
-//			try {
-//				prt = con.prepareStatement("SELECT * FROM usuarios ");
-//				ResultSet resultado = prt.executeQuery();
-//				
-//				
-//				
-//				while(resultado.next()) {
-//					usuario = new Usuario();
-//					usuario.setId(resultado.getInt(1));
-//					usuario.setNombre(resultado.getString(2));
-//					usuario.setPassword(resultado.getString(3));
-//					usuario.setLogin_fecha(resultado.getDate(4));
-//					Rol rol = new Rol();
-//					rol.setId(resultado.getInt(5));
-//					usuario.setRol(rol);
-//					
-//					usuarios.add(usuario);
-//				}
-//			} catch (SQLException e) {
-//				// TODO Auto-generated catch block
-//				e.printStackTrace();
-//			}
-//			
-//			return usuarios;
-//			}
-//		public Usuario getUsuario(int id) throws SQLException  {
-//			Usuario usuario = new Usuario();
-//		
-//				prt=getCon().prepareStatement("SELECT * FROM usuarios WHERE id=?");
-//				prt.setInt(1, id);
-//				
-//				ResultSet resultado = prt.executeQuery();
-//				resultado.next();
-//				usuario.setId(resultado.getInt("id"));
-//				usuario.setNombre(resultado.getString("nombre"));
-//				usuario.setPassword(resultado.getString("password"));
-//				usuario.setLogin_fecha(resultado.getDate("login_fecha"));
-//				Rol rol = new Rol();
-//				rol.setId(resultado.getInt("id_rol"));
-//				usuario.setRol(rol);
-//				
-//				
-//				return usuario;
-//				
-//		}
-//		
-//		
-//		public void eliminarUsuario(int id) {
-//			try {
-//				prt = con.prepareStatement("DELETE FROM usuarios WHERE id = ?");
-//				
-//				prt.setInt(1, id);
-//
-//				prt.execute();
-//			} catch (Exception e) {
-//				// TODO: handle exception
-//			}
-//			
-//		}
-//		public void modificarUsuario(Usuario usuario) {
-//			
-//			try {
-//				 prt = con.prepareStatement("UPDATE usuarios SET nombre=?,password=?,login_fecha=?, id_rol? WHERE id=?");
-//				
-//				
-//				 prt.setString(1, usuario.getNombre());
-//				 prt.setString(2, usuario.getPassword());
-//				 prt.setDate(3, new Date(usuario.getLogin_fecha().getTime()));
-//				 prt.setInt(4, usuario.getRol().getId());
-//				 prt.setInt(5, usuario.getId());
-//				
-//		
-//				
-//				
-//				 prt.executeUpdate();
-//			} catch (Exception e) {
-//				// TODO: handle exception
-//			}
-//			
-//		}
+		
+		public void insertarEvento(Evento evento) {
+			try {
+				prt = con.prepareStatement("INSERT INTO evento (cEvento, nombre, fecha, cUsuario) VALUES(?,?,?,?)");
+				
+				prt.setInt(1, evento.getcEvento());
+				prt.setString(2, evento.getNombre());
+				prt.setDate(3, evento.getFecha());
+			} catch (Exception e) {
+				// TODO: handle exception
+			}
+		}
+		public void insertarUsuario(Usuario usuario) {
+			try {
+				prt = con.prepareStatement("INSERT INTO usuario (cUsuario, nombre, apellido, telefono, correo_trabajo, trabajo, mgr, rol) VALUES(?,?,?,?,?,?,?,?)");
+				
+				prt.setInt(1, usuario.getcUsuario());
+				prt.setString(2, usuario.getNombre());
+				prt.setString(3, usuario.getApellido());
+				prt.setString(4, usuario.getTelefono());
+				prt.setString(5, usuario.getCorreoTrabajo());
+				prt.setString(6, usuario.getTrabajo());
+				prt.setInt(7, usuario.getMgr());
+				prt.setInt(8, usuario.getRol().getId());
+				
+				prt.execute();
+			} catch (Exception e) {
+				// TODO: handle exception
+			}
+			
+		}
+		public ArrayList<Usuario> getUsuarios(){
+			PreparedStatement prt;
+			ArrayList <Usuario> usuarios = new ArrayList <>();
+			Usuario usuario = new Usuario();
+			try {
+				prt = con.prepareStatement("SELECT * FROM usuario");
+				ResultSet resultado = prt.executeQuery();
+				
+				
+				
+				while(resultado.next()) {
+					usuario = new Usuario();
+					usuario.setcUsuario(resultado.getInt(1));
+					usuario.setNombre(resultado.getString(2));
+					usuario.setApellido(resultado.getString(3));
+					usuario.setTelefono(resultado.getString(4));
+					usuario.setCorreoTrabajo(resultado.getString(5));
+					usuario.setTrabajo(resultado.getString(6));
+					usuario.setMgr(resultado.getInt(7));
+					RolUsuario rolusuario = new RolUsuario();
+					rolusuario.setId(resultado.getInt(8));
+					usuario.setRol(rolusuario);
+					
+					usuarios.add(usuario);
+				}
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+			return usuarios;
+			}
+		public Usuario getUsuario(int cUsuario) throws SQLException  {
+			Usuario usuario = new Usuario();
+		
+				prt=con.prepareStatement("SELECT * FROM usuario WHERE cUsuario=?");
+				prt.setInt(1, cUsuario);
+				
+				ResultSet resultado = prt.executeQuery();
+				resultado.next();
+				
+				usuario.setcUsuario(resultado.getInt("cUsuario"));
+				usuario.setNombre(resultado.getString("nombre"));
+				usuario.setApellido(resultado.getString("apellido"));
+				usuario.setTelefono(resultado.getString("telefono"));
+				usuario.setCorreoTrabajo(resultado.getString("correo_trabajo"));
+				usuario.setTrabajo(resultado.getString("trabajo"));
+				usuario.setMgr(resultado.getInt("mgr"));
+				RolUsuario rolusuario = new RolUsuario();
+				rolusuario.setId(resultado.getInt("rol"));
+				usuario.setRol(rolusuario);
+				
+				return usuario;
+				
+		}
+		
+		
+		public void eliminarUsuario(int cUsuario) {
+			try {
+				prt = con.prepareStatement("DELETE FROM usuario WHERE cUsuario = ?");
+				
+				prt.setInt(1, cUsuario);
+
+				prt.execute();
+			} catch (Exception e) {
+				// TODO: handle exception
+			}
+			
+		}
+		public void modificarUsuario(Usuario usuario) {
+			
+			try {
+				 prt = con.prepareStatement("UPDATE usuarios SET cUsuario=?,nombre=?,apellido=?,telefono=?,correo_trabajo=?,trabajo=?,mgr=?,rol=? WHERE cUsuario=?");
+				 
+				 prt.setInt(1, usuario.getcUsuario());
+				 prt.setString(2, usuario.getNombre());
+				 prt.setString(3, usuario.getApellido());
+				 prt.setString(4, usuario.getTelefono());
+				 prt.setString(5, usuario.getCorreoTrabajo());
+				 prt.setString(6, usuario.getTrabajo());
+				 prt.setInt(7, usuario.getMgr());
+				 prt.setInt(8, usuario.getRol().getId());
+				 prt.setInt(9, usuario.getcUsuario());
+				 
+				 prt.executeUpdate();
+			} catch (Exception e) {
+				// TODO: handle exception
+			}
+			
+		}
 	
 	public Reserva getReserva(int nReserva) throws SQLException  {
 		Reserva reserva = new Reserva();
