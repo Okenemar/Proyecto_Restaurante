@@ -5,15 +5,18 @@ package clases;
 public class Producto {
 	private int cProducto;
 	private String nombre;
+	private double calorias;
+	private double proteinas;
 	private int cantidad;
 	private Double precio;
 	
-
 	
-	public Producto(int cProducto, String nombre, int cantidad, Double precio) {
+	public Producto(int cProducto, String nombre, double calorias, double proteinas, int cantidad, Double precio) {
 		super();
 		this.cProducto = cProducto;
 		this.nombre = nombre;
+		this.calorias = calorias;
+		this.proteinas = proteinas;
 		this.cantidad = cantidad;
 		this.precio = precio;
 	}
@@ -38,6 +41,22 @@ public class Producto {
 		this.nombre = nombre;
 	}
 
+	public double getCalorias() {
+		return calorias;
+	}
+
+	public void setCalorias(double calorias) {
+		this.calorias = calorias;
+	}
+
+	public double getProteinas() {
+		return proteinas;
+	}
+
+	public void setProteinas(double proteinas) {
+		this.proteinas = proteinas;
+	}
+
 	public int getCantidad() {
 		return cantidad;
 	}
@@ -53,15 +72,10 @@ public class Producto {
 	public void setPrecio(Double precio) {
 		this.precio = precio;
 	}
-
-	@Override
-	public String toString() {
-		return "Producto [cProducto=" + cProducto + ", nombre=" + nombre + ", cantidad=" + cantidad + ", precio="
-				+ precio + "]";
-	}
-	
-	
 	
 	
 	
 }
+
+	
+	

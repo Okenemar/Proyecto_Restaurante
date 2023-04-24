@@ -16,14 +16,15 @@
   <thead>
     <tr>
       <th scope="col">#</th>
-      <th scope="col">cºProducto</th>
+      <th scope="col">cProducto</th>
       <th scope="col">Nombre</th>
       <th scope="col">cantidad</th>
       <th scope="col">precio</th>
       
       <th scope="col"></th>
+       <th scope="col"></th>
       
-      <td><a href="Registrar" class="btn btn-dark">Registrar </a> </td>
+      <td><a href="RegistrarProducto" class="btn btn-dark">Registrar </a> </td>
       
      
     </tr>
@@ -33,15 +34,15 @@
      <c:forEach items="${productos}" var="producto">
     <tr>
       <th scope="row"></th>
-      <td>${usuario.cProducto}</td>
-      <td>${usuario.nombre}</td>
-      <td>${usuario.cantidad}</td>
-      <td>${usuario.precio}</td>
+      <td>${producto.cProducto}</td>
+      <td>${producto.nombre}</td>
+      <td>${producto.cantidad}</td>
+      <td>${producto.precio}</td>
       
       
-      
-      <td><a href="ModificarUsuario?id=${usuario.id}" class="btn btn-secondary ">Modificar </a> </td>
-      <td><a href="Eliminar?id=${usuario.id}" class="btn btn-danger" >eliminar </a> </td>
+      <td><a href="VerProducto?cProducto=${producto.cProducto}" class="btn btn-primary ">Ver </a> </td>
+      <td><a href="ModificarProducto?cProducto=${producto.cProducto}" class="btn btn-secondary ">Modificar </a> </td>
+      <td><a href="EliminarProducto?cProducto=${producto.cProducto}" class="btn btn-danger" >eliminar </a> </td>
     </tr>
     
     </c:forEach>

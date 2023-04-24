@@ -1,4 +1,4 @@
-package controladorUsuario;
+package controladorUsuarioP;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -7,17 +7,19 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import modelo.ModeloUsuarioP;
+
 /**
- * Servlet implementation class CrearProducto
+ * Servlet implementation class EliminarProducto
  */
-@WebServlet("/CrearProducto")
-public class CrearProducto extends HttpServlet {
+@WebServlet("/EliminarProducto")
+public class EliminarProducto extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public CrearProducto() {
+    public EliminarProducto() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -27,7 +29,18 @@ public class CrearProducto extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		request.getRequestDispatcher("VistaProductos.jsp").forward(request, response);
+		int cProducto = Integer.parseInt(request.getParameter("cProducto"));
+		
+		ModeloUsuarioP usuarioM = new ModeloUsuarioP();
+		usuarioM.conectar();
+		
+		usuarioM.eliminarProducto(cProducto);
+		
+		usuarioM.cerrar();
+		
+		response.sendRedirect("VerProductos");
+		
+		
 	}
 
 	/**
