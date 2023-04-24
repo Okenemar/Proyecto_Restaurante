@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import clases.Producto;
-import modelo.ModeloUsuarioP;
+import modelo.ModeloUsuarioPr;
 
 /**
  * Servlet implementation class RegistrarProducto
@@ -52,7 +52,7 @@ public class RegistrarProducto extends HttpServlet {
 		producto.setCantidad(cantidad);
 		producto.setPrecio(precio);
 		
-		ModeloUsuarioP usuarioM = new ModeloUsuarioP();
+		ModeloUsuarioPr usuarioM = new ModeloUsuarioPr();
 		usuarioM.conectar();
 		
 		usuarioM.registrarProducto(producto);

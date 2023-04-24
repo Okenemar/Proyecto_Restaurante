@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import clases.Producto;
-import modelo.ModeloUsuarioP;
+import modelo.ModeloUsuarioPr;
 
 /**
  * Servlet implementation class VerProductos
@@ -32,7 +32,7 @@ public class VerProductos extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		ModeloUsuarioP usuarioM = new ModeloUsuarioP();
+		ModeloUsuarioPr usuarioM = new ModeloUsuarioPr();
 		
 		ArrayList <Producto> productos = new ArrayList <>();
 		
