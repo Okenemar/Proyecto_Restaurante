@@ -81,7 +81,7 @@ public class RegistrarPlato extends HttpServlet {
 		modeloPl.conectar();
 		
 		modeloPl.CrearPlato(plato);
-		modeloPl.getCodigoPlato(plato);
+		modeloPl.getCodigoPlatoNombre(plato);
 		modeloPl.AñadirProductosPlato(plato);
 		
 		modeloPl.cerrar();

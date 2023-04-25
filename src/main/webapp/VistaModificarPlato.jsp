@@ -24,7 +24,7 @@
 
 
 					<p class="fw-bold">
-						Id: ${plato.cPlato} <input type="hidden" name="cProducto"
+						Id: ${plato.cPlato} <input type="hidden" name="cPlato"
 							value="${plato.cPlato }" /> <br>
 					</p>
 
@@ -34,7 +34,7 @@
 					</p>
 					<br>
 					<p class="fw-bold">
-						Precio: <input type="text" name="calorias"
+						Precio: <input type="text" name="precio"
 							value="${plato.precio }" /> <br>
 					</p>
 					<br>
@@ -59,16 +59,17 @@
 						<tbody>
 			
 		
-							<c:forEach items="${Todosproductos}" var="producto">
+							<c:forEach items="${Todosproductos}" var="Todosproductos">
 								<tr>
 									<th scope="row"></th>
-									<td>${producto.cProducto}</td>
-									<td>${producto.nombre}</td>
+									<td>${Todosproductos.cProducto}</td>
+									<td>${Todosproductos.nombre}</td>
 
-									<td><input class="form-check-input" name="productos" type="checkbox" 
-										id="flexCheckDefault" value="${producto.cProducto}"
-										 <c:if test="${productosPlato[producto.cProducto]}"> checked="checked"</c:if>>
-										</td>
+									<td><input class="form-check-input" type="checkbox"
+										id="flexCheckDefault" value="${Todosproductos.cProducto}" name="${Todosproductos.cProducto}"></td>
+									
+										 <!--  <c:if test="${productosPlato[producto.cProducto]}"> checked="checked"</c:if>>
+										</td>-->
 										
 
 								</tr>
@@ -81,7 +82,7 @@
 				</div>
 			</div>
 			<input type="submit" class="btn btn-secondary" value="Guardar" />
-		</form> <!-- Agregué la etiqueta de cierre del formulario -->
+		</form> 
 	</div>
 </body>
 </html>

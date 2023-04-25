@@ -63,8 +63,40 @@ public class ModificarPlato extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
+		int cPlato = Integer.parseInt(request.getParameter("cPlato"));
+		String nombre = request.getParameter("nombre");
+		double precio = Double.parseDouble(request.getParameter("precio"));
+		ModeloUsuarioPr modeloPr = new ModeloUsuarioPr();
+		modeloPr.conectar();
+		ArrayList<Producto> todosProductos = modeloPr.getProductos();
+		ArrayList<Producto> productosPlato = new ArrayList<Producto>();
+		Plato plato = new Plato();
+
+		for (Producto producto:todosProductos) {
+			try {
+				if (!request.getParameter(producto.getcProducto()+"").equals(null)) {
+					productosPlato.add(producto);
+				}
+			} catch (Exception e) {
+			}
+		}
+		modeloPr.cerrar();
+		plato.setcPlato(cPlato);
+		plato.setNombre(nombre);
+		plato.setPrecio(precio);
+		plato.setProductos(productosPlato);
+		
+		ModeloUsuarioPl modeloPl = new ModeloUsuarioPl();
+		modeloPl.conectar();
+		modeloPl.ModiFicarPlato(plato);
+		modeloPl.ModificarProductosPlato(plato);
+		modeloPl.cerrar();
+		
+		
+		response.sendRedirect("VerPlatos");
+		
+	
+		
 	}
 
 }

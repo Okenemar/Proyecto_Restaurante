@@ -118,7 +118,7 @@ public class ModeloUsuarioPl extends Conector {
 
 	}
 	
-	public void getCodigoPlato(Plato plato) {
+	public void getCodigoPlatoNombre(Plato plato) {
 		PreparedStatement prt;
 		
 		try {
@@ -149,6 +149,71 @@ public class ModeloUsuarioPl extends Conector {
 			}
 		}
 
+	}
+	
+	public void ModiFicarPlato(Plato plato) {
+
+		PreparedStatement prt;
+
+		try {
+			prt = con.prepareStatement("UPDATE platos SET nombre=?,precio=? WHERE c_plato=?");
+			prt.setString(1, plato.getNombre());
+			prt.setDouble(2, plato.getPrecio());
+			prt.setInt(3,plato.getcPlato());
+			prt.executeUpdate();
+
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+	}
+	
+	public void ModificarProductosPlato(Plato plato) {
+		
+		PreparedStatement prt;
+		for(Producto producto:plato.getProductos()) {
+			try {
+				prt = con.prepareStatement("UPDATE plato_producto SET codigo_producto=? WHERE codigo_plato=?");
+				prt.setInt(1, producto.getcProducto());
+				prt.setInt(2, plato.getcPlato());
+				prt.execute();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+
+		
+	}
+	
+	public void EliminarProductosPlato(int cPlato) {
+		PreparedStatement prt;
+		
+		try {
+			prt = con.prepareStatement("DELETE FROM plato_producto WHERE codigo_plato=?");
+			
+			prt.setInt(1, cPlato);
+			prt.execute();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		
+	}
+	
+	public void EliminarPlato(int cPlato) {
+		PreparedStatement prt;
+		
+		try {
+			prt = con.prepareStatement("DELETE FROM platos WHERE c_plato=?");
+			prt.setInt(1, cPlato);
+			prt.execute();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 	}
 
 	
