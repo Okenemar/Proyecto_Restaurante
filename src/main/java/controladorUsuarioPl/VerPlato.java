@@ -35,19 +35,19 @@ public class VerPlato extends HttpServlet {
 		
 		int cPlato = Integer.parseInt(request.getParameter("cPlato"));
 		Plato plato = new Plato();
-		ArrayList <Producto> productos = new ArrayList<>();
+		//ArrayList <Producto> productos = new ArrayList<>();
 		
 		ModeloUsuarioPl usuarioM = new ModeloUsuarioPl();
 		
 		usuarioM.conectar();
 		
-		productos =usuarioM.getProductosPlato(cPlato);
+		//productos =usuarioM.getProductosPlato(cPlato);
 		plato = usuarioM.getPlato(cPlato);
 		
 		
 		usuarioM.cerrar();
 		
-		request.setAttribute("productos", productos);
+		//request.setAttribute("productos", productos);
 		request.setAttribute("plato", plato);
 		
 		request.getRequestDispatcher("VistaPlato.jsp").forward(request, response);

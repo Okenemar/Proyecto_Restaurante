@@ -13,9 +13,10 @@
 
 <h2 class="fw-bold" >${plato.nombre}</h2>
 	
-	<c:forEach items="${productos}" var="producto">
-    	<c:out value="${plato.producto.nombre}"></c:out>
-      
+	
+	<c:forEach items="${plato.productos}" var="producto">
+    	
+      <li class="list-group-item">${producto.nombre}</li>
     </c:forEach>
 	 
 </body>

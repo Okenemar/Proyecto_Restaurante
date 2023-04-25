@@ -47,12 +47,7 @@ public class ModeloUsuarioPl extends Conector{
 		ArrayList <Producto> productos = new ArrayList<Producto>();
 		
 		try {
-			prt = con.prepareStatement("SELECT PR.c_producto,PR.nombre FROM productos "
-										+ "INNER JOIN plato_producto "
-										+ "ON PR.c_producto= P.c_producto "
-										+ "INNER JOIN platos "
-										+ "ON PL.c_plato=P.c_plato"
-										+ "WHERE P.c_plato=?");
+			prt = con.prepareStatement("SELECT  c_producto,nombre  FROM productos INNER JOIN plato_producto ON c_producto = codigo_producto WHERE codigo_plato=?");
 			prt.setInt(1,cPlato);
 			
 			ResultSet result = prt.executeQuery();
@@ -61,6 +56,7 @@ public class ModeloUsuarioPl extends Conector{
 				Producto producto = new Producto();
 				producto.setcProducto(result.getInt(1));
 				producto.setNombre(result.getString(2));
+				
 				
 				productos.add(producto);
 					
@@ -99,7 +95,7 @@ public class ModeloUsuarioPl extends Conector{
 			plato.setNombre(result.getString("nombre"));
 			plato.setPrecio(result.getDouble("precio"));
 			
-			//plato.setProductos(getProductosPlato(cPlato));
+			plato.setProductos(getProductosPlato(cPlato));
 			
 			
 				
