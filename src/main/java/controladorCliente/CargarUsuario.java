@@ -1,8 +1,7 @@
-package controladorUsuario;
+package controladorCliente;
 
 import java.io.IOException;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
+import java.sql.SQLException;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -11,20 +10,19 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import clases.Cliente;
-import clases.Reserva;
-import 	modeloUsuario.ModeloUsuario;
+import modeloCliente.ModeloCliente;
 
 /**
- * Servlet implementation class ModificarReserva
+ * Servlet implementation class CargarUsuario
  */
-@WebServlet("/ModificarReserva")
-public class ModificarReserva extends HttpServlet {
+@WebServlet("/CargarUsuario")
+public class CargarUsuario extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ModificarReserva() {
+    public CargarUsuario() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -33,31 +31,23 @@ public class ModificarReserva extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		int nReserva = Integer.parseInt(request.getParameter("nReserva"));
-		String nombre = request.getParameter("nombre");
-		String telefono = request.getParameter("telefono");
-		
-		SimpleDateFormat fecha = new SimpleDateFormat("yyyy-MM-dd");
-		ModeloUsuario modeloUsuario  = new ModeloUsuario();
-		Reserva reserva = new Reserva();
-		reserva.setnReserva(nReserva);
-		try {
-			reserva.setFecha(fecha.parse(request.getParameter("fecha")));
-		} catch (ParseException e) {
-			e.printStackTrace();
-		}
+		ModeloCliente clienteM = new ModeloCliente();
 		Cliente cliente = new Cliente();
+		String DNI = request.getParameter("DNI");
 		
-		cliente.setNombre(nombre);
-		cliente.setTelefono(telefono);
-		reserva.setCliente(cliente);
+		clienteM.conectar();
 		
-		modeloUsuario.conectar();
-		modeloUsuario.modificarReserva(reserva);
-		modeloUsuario.cerrar();
+		cliente = clienteM.getCliente(DNI);
+		
+		
+		clienteM.cerrar();
+		
+		request.setAttribute("cliente", cliente);
+		
+		
+		request.getRequestDispatcher("VistaReservaUsuario.jsp").forward(request, response);
 		
 	}
-
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
@@ -67,4 +57,3 @@ public class ModificarReserva extends HttpServlet {
 	}
 
 }
-

@@ -10,7 +10,7 @@
 <body>
 	<form action="ModificarReserva">
 	<label>Nº Reserva</label>
-	<input type="hidden" name="id" placeholder="id" value="${reserva.nReserva}">${reserva.nReserva}
+	<input type="hidden" name="nReserva" placeholder="id" value="${reserva.nReserva}">${reserva.nReserva}
 	<label>Fecha</label>
 	<input type="date" name="fecha" placeholder="fecha" value="${reserva.fecha}">
 	<label>DNI</label>
@@ -19,6 +19,8 @@
 	<input type="text" name="nombre" placeholder="nombre" value="${reserva.cliente.nombre}">
 	<label>Telefono</label>
 	<input type="text" name="telefono" placeholder="telefono" value="${reserva.cliente.telefono}">
+	
+	 <td><a href="EliminarReserva?nReserva=${reserva.nReserva}" class="btn btn-danger">eliminar</a></td>
 	
 	<input type="submit" value="Modificar">
 	</form>

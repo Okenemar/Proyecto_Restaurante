@@ -1,30 +1,29 @@
 package controladorUsuario;
 
 import java.io.IOException;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.text.SimpleDateFormat;
 
-import clases.Cliente;
-import clases.Reserva;
-import 	modeloUsuario.ModeloUsuario;
+
+import clases.Usuario;
+import clases.Evento;
+import modeloUsuario.ModeloUsuario;
 
 /**
- * Servlet implementation class ModificarReserva
+ * Servlet implementation class ModificarEvento
  */
-@WebServlet("/ModificarReserva")
-public class ModificarReserva extends HttpServlet {
+@WebServlet("/ModificarEvento")
+public class ModificarEvento extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ModificarReserva() {
+    public ModificarEvento() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -33,38 +32,43 @@ public class ModificarReserva extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		int nReserva = Integer.parseInt(request.getParameter("nReserva"));
+		
+		Evento evento = new Evento();
+		ModeloUsuario modeloUsuario = new ModeloUsuario();
+		int cEvento = Integer.parseInt(request.getParameter("c_evento"));
 		String nombre = request.getParameter("nombre");
-		String telefono = request.getParameter("telefono");
-		
+		int cUsuario=Integer.parseInt(request.getParameter("c_usuario"));
 		SimpleDateFormat fecha = new SimpleDateFormat("yyyy-MM-dd");
-		ModeloUsuario modeloUsuario  = new ModeloUsuario();
-		Reserva reserva = new Reserva();
-		reserva.setnReserva(nReserva);
-		try {
-			reserva.setFecha(fecha.parse(request.getParameter("fecha")));
-		} catch (ParseException e) {
-			e.printStackTrace();
-		}
-		Cliente cliente = new Cliente();
 		
-		cliente.setNombre(nombre);
-		cliente.setTelefono(telefono);
-		reserva.setCliente(cliente);
+		evento.setcEvento(cEvento);
+		evento.setNombre(nombre);
+		try {
+			evento.setFecha(fecha.parse(request.getParameter("fecha")));
+			
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		
+		
+		Usuario usuario = new Usuario();
+		
+		usuario.setcUsuario(cUsuario);
+		
+		evento.setUsuario(usuario);
 		
 		modeloUsuario.conectar();
-		modeloUsuario.modificarReserva(reserva);
+		modeloUsuario.modificarEvento(evento);
 		modeloUsuario.cerrar();
-		
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
+	
+		
+		
+		
 	}
 
 }
-

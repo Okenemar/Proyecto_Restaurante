@@ -1,30 +1,25 @@
 package controladorUsuario;
 
 import java.io.IOException;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import clases.Cliente;
-import clases.Reserva;
-import 	modeloUsuario.ModeloUsuario;
+import modeloUsuario.ModeloUsuario;
 
 /**
- * Servlet implementation class ModificarReserva
+ * Servlet implementation class EliminarEvento
  */
-@WebServlet("/ModificarReserva")
-public class ModificarReserva extends HttpServlet {
+@WebServlet("/EliminarEvento")
+public class EliminarEvento extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ModificarReserva() {
+    public EliminarEvento() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -33,29 +28,14 @@ public class ModificarReserva extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		int nReserva = Integer.parseInt(request.getParameter("nReserva"));
-		String nombre = request.getParameter("nombre");
-		String telefono = request.getParameter("telefono");
+		int cEvento = Integer.parseInt(request.getParameter("c_evento"));
 		
-		SimpleDateFormat fecha = new SimpleDateFormat("yyyy-MM-dd");
-		ModeloUsuario modeloUsuario  = new ModeloUsuario();
-		Reserva reserva = new Reserva();
-		reserva.setnReserva(nReserva);
-		try {
-			reserva.setFecha(fecha.parse(request.getParameter("fecha")));
-		} catch (ParseException e) {
-			e.printStackTrace();
-		}
-		Cliente cliente = new Cliente();
-		
-		cliente.setNombre(nombre);
-		cliente.setTelefono(telefono);
-		reserva.setCliente(cliente);
-		
+		ModeloUsuario modeloUsuario = new ModeloUsuario();
 		modeloUsuario.conectar();
-		modeloUsuario.modificarReserva(reserva);
+		modeloUsuario.eliminarEvento(cEvento);
 		modeloUsuario.cerrar();
 		
+		response.sendRedirect("VerEventos");
 	}
 
 	/**
@@ -67,4 +47,3 @@ public class ModificarReserva extends HttpServlet {
 	}
 
 }
-
