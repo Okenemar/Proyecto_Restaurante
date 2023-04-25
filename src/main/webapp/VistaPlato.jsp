@@ -18,6 +18,8 @@
     	
       <li class="list-group-item">${producto.nombre}</li>
     </c:forEach>
+    
+    <a href="VerPlatos" class="btn btn-primary">Volver</a>
 	 
 </body>
 </html>
