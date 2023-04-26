@@ -6,10 +6,10 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.text.SimpleDateFormat;
 
 
-import clases.Usuario;
+
+
 import clases.Evento;
 import modeloUsuario.ModeloUsuario;
 
@@ -37,24 +37,9 @@ public class ModificarEvento extends HttpServlet {
 		ModeloUsuario modeloUsuario = new ModeloUsuario();
 		int cEvento = Integer.parseInt(request.getParameter("c_evento"));
 		String nombre = request.getParameter("nombre");
-		int cUsuario=Integer.parseInt(request.getParameter("c_usuario"));
-		SimpleDateFormat fecha = new SimpleDateFormat("yyyy-MM-dd");
 		
 		evento.setcEvento(cEvento);
 		evento.setNombre(nombre);
-		try {
-			evento.setFecha(fecha.parse(request.getParameter("fecha")));
-			
-		} catch (Exception e) {
-			// TODO: handle exception
-		}
-		
-		
-		Usuario usuario = new Usuario();
-		
-		usuario.setcUsuario(cUsuario);
-		
-		evento.setUsuario(usuario);
 		
 		modeloUsuario.conectar();
 		modeloUsuario.modificarEvento(evento);

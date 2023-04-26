@@ -10,7 +10,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import clases.Evento;
-import clases.Reserva;
 import modeloUsuario.ModeloUsuario;
 
 /**

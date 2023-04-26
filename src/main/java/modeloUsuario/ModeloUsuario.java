@@ -18,12 +18,11 @@ public class ModeloUsuario extends Conector{
 	PreparedStatement prt;
 	public void insertarEvento(Evento evento) {
 	try {
-		prt = con.prepareStatement("INSERT INTO eventos (c_evento, nombre, fecha, c_usuario) VALUES(?,?,?,?)");
+		prt = con.prepareStatement("INSERT INTO eventos (c_evento, nombre) VALUES(?,?)");
 		
 		prt.setInt(1, evento.getcEvento());
 		prt.setString(2, evento.getNombre());
-		prt.setDate(3, new Date (evento.getFecha().getTime()));
-		prt.setInt(4, evento.getUsuario().getcUsuario());
+		
 		
 		prt.execute();
 		
@@ -47,13 +46,14 @@ public class ModeloUsuario extends Conector{
 	
 	public void modificarEvento(Evento evento) {
 		try {
-			prt = con.prepareStatement("UPDATE eventos SET c_evento=?, nombre=?, fecha=?, c_usuario=? WHERE c_evento=?");
+			prt = con.prepareStatement("UPDATE eventos SET c_evento=?, nombre=? WHERE c_evento=?");
 			
 			prt.setInt(1, evento.getcEvento());
 			prt.setString(2, evento.getNombre());
-			prt.setDate(3, new Date(evento.getFecha().getTime()));
-			prt.setInt(4, evento.getUsuario().getcUsuario());
-			prt.setInt(5, evento.getcEvento());
+			prt.setInt(3, evento.getcEvento());
+			
+			prt.executeUpdate();
+
 		} catch (Exception e) {
 			// TODO: handle exception
 		}
@@ -68,10 +68,8 @@ public class ModeloUsuario extends Conector{
 		ResultSet resultado = prt.executeQuery();
 		resultado.next();
 		
-		evento.setcEvento(resultado.getInt("cEvento"));
+		evento.setcEvento(resultado.getInt("c_evento"));
 		evento.setNombre(resultado.getString("nombre"));
-		evento.setFecha(resultado.getDate("fecha"));
-		evento.setUsuario(getUsuario(resultado.getInt("cUsuario")));
 		
 		return evento;
 	}
@@ -90,10 +88,6 @@ public class ModeloUsuario extends Conector{
 				evento = new Evento();
 				evento.setcEvento(resultado.getInt(1));
 				evento.setNombre(resultado.getString(2));
-				evento.setFecha(resultado.getDate(3));
-				Usuario usuario = new Usuario();
-				usuario.setcUsuario(resultado.getInt(4));
-				evento.setUsuario(usuario);
 				
 				eventos.add(evento);
 				

@@ -31,10 +31,9 @@ public class FormularioModificarEvento extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		ModeloUsuario modeloUsuario = new ModeloUsuario();
 		Evento evento = new Evento();
-		int cEvento=Integer.parseInt(request.getParameter("c_evento"));
 		try {
 			modeloUsuario.conectar();
-			evento = modeloUsuario.getEvento(cEvento);
+			evento = modeloUsuario.getEvento(Integer.parseInt(request.getParameter("c_evento")));
 			modeloUsuario.cerrar();
 		} catch (Exception e) {
 			// TODO: handle exception

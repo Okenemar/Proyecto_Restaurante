@@ -24,11 +24,7 @@
 		<p>Nombre:
 		<input type="text" name="nombre" /> <br></p>
 		<br>
-		<p>Fecha:
-		<input type="date" name="fecha" /> <br></p>
-		<p>cUsuario:
-		<input type="text" name="c_usuario" /> <br></p>
-		<br>
+		
 		
 		<br>
 		<br>
@@ -52,8 +48,7 @@
       <th scope="col">#</th>
       <th scope="col">cEvento</th>
       <th scope="col">nombre</th>
-      <th scope="col">fecha</th>
-      <th scope="col">cUsuario</th>
+     
       
      
     </tr>
@@ -65,8 +60,6 @@
       <th scope="row"></th>
       <td>${evento.cEvento}</td>
       <td>${evento.nombre}</td>
-      <td>${evento.fecha}</td>
-      <td>${evento.usuario.cUsuario}</td>
       <td><a href="FormularioModificarEvento?c_evento=${evento.cEvento}">modificar</a></td>
       <td><a href="EliminarEvento?c_evento=${evento.cEvento}">eliminar</a></td>
       

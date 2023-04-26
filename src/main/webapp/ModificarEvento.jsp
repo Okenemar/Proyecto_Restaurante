@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+<%@ taglib prefix="c" uri= "http://java.sun.com/jsp/jstl/core"  %>
 <!DOCTYPE html>
+<%@ taglib prefix="c" uri= "http://java.sun.com/jsp/jstl/core"  %>
 <html>
 <head>
 <meta charset="ISO-8859-1">
@@ -14,10 +16,7 @@
 	<input type="hidden" name="c_evento" placeholder="c_evento" value="${evento.cEvento}">${evento.cEvento}
 	<label>Nombre</label>
 	<input type="text" name="nombre" placeholder="nombre" value="${evento.nombre}">
-	<label>Fecha</label>
-	<input type="date" name="fecha" placeholder="fecha" value="${evento.fecha}">
-	<label>cUsuario</label>
-	<input type="text" name="c_usuario" placeholder="c_usuario" value="${evento.usuario.cUsuario}">
+	
 	
 	<input type="submit" value="Modificar">
 	</form>
