@@ -59,17 +59,30 @@
 						<tbody>
 			
 		
-							<c:forEach items="${Todosproductos}" var="Todosproductos">
+							<c:forEach items="${productosPlato}" var="productosPlato">
 								<tr>
 									<th scope="row"></th>
-									<td>${Todosproductos.cProducto}</td>
-									<td>${Todosproductos.nombre}</td>
+									<td>${productosPlato.cProducto}</td>
+									<td>${productosPlato.nombre}</td>
 
 									<td><input class="form-check-input" type="checkbox"
-										id="flexCheckDefault" value="${Todosproductos.cProducto}" name="${Todosproductos.cProducto}"></td>
-									
-										 <!--  <c:if test="${productosPlato[producto.cProducto]}"> checked="checked"</c:if>>
-										</td>-->
+										id="flexCheckDefault" value="${productosPlato.cProducto}" checked></td>
+								
+										
+
+								</tr>
+
+							</c:forEach>
+							
+							<c:forEach items="${productosNOplato}" var="productosNOplato">
+								<tr>
+									<th scope="row"></th>
+									<td>${productosNOplato.cProducto}</td>
+									<td>${productosNOplato.nombre}</td>
+
+									<td><input class="form-check-input" type="checkbox"
+										id="flexCheckDefault" value="${productosNOplato.cProducto}" ></td>
+								
 										
 
 								</tr>

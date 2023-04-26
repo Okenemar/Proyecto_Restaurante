@@ -47,12 +47,31 @@ public class ModificarPlato extends HttpServlet {
 		usuarioMPR.conectar();
 
 		ArrayList<Producto> Todosproductos = usuarioMPR.getProductos();
-
+		ArrayList <Producto> productosNOplato = new ArrayList <>(); 
+		
+		
+	    
+		for(int i=0;i< Todosproductos.size() ;i++) {
+			boolean esta=false;
+			
+			for (int j = 0; j < productosPlato.size()  ; j++) {
+				if (productosPlato.get(j).getcProducto()==Todosproductos.get(i).getcProducto()) {
+					
+					esta=true;
+					break;
+				}
+				
+			}
+			if (esta==false) {
+			productosNOplato.add(Todosproductos.get(i));
+			}
+		}
+			
 		usuarioMPR.cerrar();
 		
 		request.setAttribute("plato", plato);
 		request.setAttribute("productosPlato",  productosPlato);
-		request.setAttribute("Todosproductos", Todosproductos);
+		request.setAttribute("productosNOplato", productosNOplato );
 		
 		request.getRequestDispatcher("VistaModificarPlato.jsp").forward(request, response);
 		
