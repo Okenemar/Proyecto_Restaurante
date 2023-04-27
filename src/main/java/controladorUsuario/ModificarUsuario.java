@@ -1,6 +1,7 @@
 package controladorUsuario;
 
 import java.io.IOException;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -9,6 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import clases.RolUsuario;
 import clases.Usuario;
+import modeloRol.ModeloRol;
 import modeloUsuario.ModeloUsuario;
 
 /**
@@ -32,6 +34,10 @@ public class ModificarUsuario extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		Usuario usuario = new Usuario();
 		ModeloUsuario modeloUsuario = new ModeloUsuario();
+		ModeloRol modeloRol = new ModeloRol();
+		
+		
+		
 		int cUsuario = Integer.parseInt(request.getParameter("c_usuario"));
 		String nombre = request.getParameter("nombre");
 		String apellido = request.getParameter("apellido");
@@ -49,13 +55,22 @@ public class ModificarUsuario extends HttpServlet {
 		usuario.setMgr(mgr);
 		
 		RolUsuario rolUsuario = new RolUsuario();
-
+		
+		
 		rolUsuario.setId(rol);
-		usuario.setRol(rolUsuario);
+		modeloRol.conectar();
+		usuario.setRol(modeloRol.getRol(rol));
+		modeloRol.cerrar();
 		
 		modeloUsuario.conectar();
 		modeloUsuario.modificarUsuario(usuario);
 		modeloUsuario.cerrar();
+		
+	
+		
+	
+		response.sendRedirect("VerUsuarios");
+
 		
 	}
 

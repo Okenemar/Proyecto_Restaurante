@@ -12,6 +12,7 @@ import clases.Reserva;
 import clases.RolUsuario;
 import clases.Usuario;
 import conexion.Conector;
+import modeloRol.ModeloRol;
 
 public class ModeloUsuario extends Conector{
 	
@@ -154,7 +155,7 @@ public class ModeloUsuario extends Conector{
 		
 		public void insertarUsuario(Usuario usuario) {
 			try {
-				prt = con.prepareStatement("INSERT INTO usuarios (cUsuario, nombre, apellido, telefono, correo_trabajo, trabajo, mgr, rol) VALUES(?,?,?,?,?,?,?,?)");
+				prt = con.prepareStatement("INSERT INTO usuarios (c_usuario, nombre, apellido, telefono, correo_trabajo, trabajo, mgr, rol) VALUES(?,?,?,?,?,?,?,?)");
 				
 				prt.setInt(1, usuario.getcUsuario());
 				prt.setString(2, usuario.getNombre());
@@ -191,10 +192,11 @@ public class ModeloUsuario extends Conector{
 					usuario.setCorreoTrabajo(resultado.getString(5));
 					usuario.setTrabajo(resultado.getString(6));
 					usuario.setMgr(resultado.getInt(7));
-					RolUsuario rolusuario = new RolUsuario();
-					rolusuario.setId(resultado.getInt(8));
-					usuario.setRol(rolusuario);
-					
+					ModeloRol modRol = new ModeloRol();
+					modRol.conectar();
+					usuario.setRol(modRol.getRol(resultado.getInt(8)));
+					modRol.cerrar();
+	
 					usuarios.add(usuario);
 				}
 			} catch (SQLException e) {
@@ -207,13 +209,13 @@ public class ModeloUsuario extends Conector{
 		public Usuario getUsuario(int cUsuario) throws SQLException  {
 			Usuario usuario = new Usuario();
 		
-				prt=con.prepareStatement("SELECT * FROM usuarios WHERE cUsuario=?");
+				prt=con.prepareStatement("SELECT * FROM usuarios WHERE c_usuario=?");
 				prt.setInt(1, cUsuario);
 				
 				ResultSet resultado = prt.executeQuery();
 				resultado.next();
 				
-				usuario.setcUsuario(resultado.getInt("cUsuario"));
+				usuario.setcUsuario(resultado.getInt("c_usuario"));
 				usuario.setNombre(resultado.getString("nombre"));
 				usuario.setApellido(resultado.getString("apellido"));
 				usuario.setTelefono(resultado.getString("telefono"));
@@ -231,7 +233,7 @@ public class ModeloUsuario extends Conector{
 		
 		public void eliminarUsuario(int cUsuario) {
 			try {
-				prt = con.prepareStatement("DELETE FROM usuarios WHERE cUsuario = ?");
+				prt = con.prepareStatement("DELETE FROM usuarios WHERE c_usuario = ?");
 				
 				prt.setInt(1, cUsuario);
 
@@ -244,17 +246,17 @@ public class ModeloUsuario extends Conector{
 		public void modificarUsuario(Usuario usuario) {
 			
 			try {
-				 prt = con.prepareStatement("UPDATE usuarios SET cUsuario=?,nombre=?,apellido=?,telefono=?,correo_trabajo=?,trabajo=?,mgr=?,rol=? WHERE cUsuario=?");
+				 prt = con.prepareStatement("UPDATE usuarios SET nombre=?,apellido=?,telefono=?,correo_trabajo=?,trabajo=?,mgr=?,rol=? WHERE c_usuario=?");
 				 
-				 prt.setInt(1, usuario.getcUsuario());
-				 prt.setString(2, usuario.getNombre());
-				 prt.setString(3, usuario.getApellido());
-				 prt.setString(4, usuario.getTelefono());
-				 prt.setString(5, usuario.getCorreoTrabajo());
-				 prt.setString(6, usuario.getTrabajo());
-				 prt.setInt(7, usuario.getMgr());
-				 prt.setInt(8, usuario.getRol().getId());
-				 prt.setInt(9, usuario.getcUsuario());
+				
+				 prt.setString(1, usuario.getNombre());
+				 prt.setString(2, usuario.getApellido());
+				 prt.setString(3, usuario.getTelefono());
+				 prt.setString(4, usuario.getCorreoTrabajo());
+				 prt.setString(5, usuario.getTrabajo());
+				 prt.setInt(6, usuario.getMgr());
+				 prt.setInt(7, usuario.getRol().getId());
+				 prt.setInt(8, usuario.getcUsuario());
 				 
 				 prt.executeUpdate();
 			} catch (Exception e) {

@@ -60,8 +60,8 @@
       <th scope="row"></th>
       <td>${evento.cEvento}</td>
       <td>${evento.nombre}</td>
-      <td><a href="FormularioModificarEvento?c_evento=${evento.cEvento}">modificar</a></td>
-      <td><a href="EliminarEvento?c_evento=${evento.cEvento}">eliminar</a></td>
+      <td><a href="FormularioModificarEvento?c_evento=${evento.cEvento}" class="btn btn-primary">modificar</a></td>
+      <td><a href="EliminarEvento?c_evento=${evento.cEvento}" class="btn btn-danger">eliminar</a></td>
       
    
       

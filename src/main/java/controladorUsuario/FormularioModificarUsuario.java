@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import clases.Usuario;
+import modeloRol.ModeloRol;
 import modeloUsuario.ModeloUsuario;
 
 /**
@@ -30,14 +31,21 @@ public class FormularioModificarUsuario extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		ModeloUsuario modeloUsuario = new ModeloUsuario();
+		ModeloRol modeloRol = new ModeloRol();
 		Usuario usuario = new Usuario();
 		try {
 			modeloUsuario.conectar();
 			usuario = modeloUsuario.getUsuario(Integer.parseInt(request.getParameter("c_usuario")));
 			modeloUsuario.cerrar();
+			
+			modeloRol.conectar();
+			request.setAttribute("roles",modeloRol.getRoles());
+			modeloRol.cerrar();
+			
 		} catch (Exception e) {
 			// TODO: handle exception
 		}
+		
 		request.setAttribute("usuario", usuario);
 		request.getRequestDispatcher("ModificarUsuario.jsp").forward(request, response);
 	}

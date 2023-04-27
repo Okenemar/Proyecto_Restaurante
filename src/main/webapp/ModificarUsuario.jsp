@@ -22,19 +22,31 @@
 	<label>Telefono</label>
 	<input type="text" name="telefono" placeholder="telefono" value="${usuario.telefono}">
 	<label>Correo Trabajo</label>
-	<input type="text" name="correo_trabajo" placeholder="correo_trabajo" value="${usuario.correo_trabajo}">
+	<input type="text" name="correo_trabajo" placeholder="correo_trabajo" value="${usuario.correoTrabajo}">
 	<label>Trabajo</label>
 	<input type="text" name="trabajo" placeholder="trabajo" value="${usuario.trabajo}">
 	<label>Mgr</label>
 	<input type="text" name="mgr" placeholder="mgr" value="${usuario.mgr}">
 	<label>Rol</label>
-	<input type="text" name="rol" placeholder="rol" value="${usuario.rolUsuario.nombre}">
+	<select name="rol">
+		<c:forEach items="${roles}" var="rolUsuario">
+		<c:if test="${rolUsuario.id == rolUsuario.id }">
+			<option value="${rolUsuario.id}" selected> ${rolUsuario.nombre} </option>
+		</c:if>
+		<c:if test="${rolUsuario.id != rolUsuario.id }">
+			<option value="${rolUsuario.id}" selected> ${rolUsuario.nombre} </option>
+		</c:if>
+		
+	</c:forEach>
+	</select>
 	
-
-	<input type="submit" value="Modificar">
-	</form>
+	
+		
+		<input type="submit" value="Modificar"  class="btn btn-primary">
+		
+</form>
 	<form action="VerUsuarios">
-		<input type="submit" value="Volver">
+		<input type="submit" value="Volver"  class="btn btn-primary">
 	</form>
 </body>
 </html>
