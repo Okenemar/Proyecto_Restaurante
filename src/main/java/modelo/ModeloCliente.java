@@ -105,13 +105,15 @@ public class ModeloCliente extends Conector{
 		PreparedStatement prt;
 		
 		try {
-			prt= con.prepareStatement("INSERT INTO reservas (fecha,DNI,nombre, telefono) VALUES (?,?,?,?)");
+			prt= con.prepareStatement("INSERT INTO reservas (fecha,DNI,nombre, telefono,id_evento) VALUES (?,?,?,?,?)");
 			prt.setDate(1, new Date (reserva.getFecha().getTime() ));
 			prt.setString(2, reserva.getCliente().getDni());
 			
 			prt.setString(3, reserva.getCliente().getNombre());
 			
 			prt.setString(4, reserva.getCliente().getTelefono());
+			
+			prt.setInt(5, reserva.getEvento().getcEvento());
 			
 		
 			

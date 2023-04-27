@@ -61,7 +61,7 @@ public class AñadirReserva extends HttpServlet {
 		int idEvento =Integer.parseInt(request.getParameter("evento"));
 		
 		try {
-			Date Fecha = formatFecha.parse(request.getParameter("Fecha"));
+			Date Fecha = formatFecha.parse(request.getParameter("fecha"));
 			reserva.setFecha(Fecha);
 		} catch (ParseException e) {
 			// TODO Auto-generated catch block

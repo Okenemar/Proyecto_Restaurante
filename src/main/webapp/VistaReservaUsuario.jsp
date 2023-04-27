@@ -27,7 +27,7 @@
 <form method="POST" action="AñadirReserva">
 		
 		<p>DNI:
-		<input type="text" name="DNI"  value="${cliente.dni}"/><br>
+		<input type="text" name="DNI2"  value="${cliente.dni}"/><br>
 		</p> 
 		<p>Nombre:
 		<input type="text" name="Nombre"  value="${cliente.nombre}"/> <br> </p>
@@ -42,7 +42,7 @@
 		<input type="text" name="Correo"  value="${cliente.correo}"/> <br></p>
 		<br>
 		<p>Fecha:
-		<input type="date" name="Fecha" /> <br></p>
+		<input type="date" name="fecha" /> <br></p>
 		<br>
 		Evento_Realizar:<select name="evento">
 	<option value="0"></option>
