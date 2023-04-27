@@ -10,6 +10,7 @@ import java.sql.Date;
 import clases.Cliente;
 import clases.Reserva;
 import conexion.Conector;
+import controladorUsuario.ModeloEvento;
 
 public class ModeloCliente extends Conector{
 	
@@ -129,7 +130,8 @@ public class ModeloCliente extends Conector{
 
 
 		public ArrayList<Reserva> getReservasUsuario(String DNI){
-
+		ModeloEvento eventoM = new ModeloEvento();
+			eventoM.setConexion(this.con);
 		PreparedStatement prt;
 
 		ArrayList <Reserva> reservas = new ArrayList<>();
@@ -138,7 +140,7 @@ public class ModeloCliente extends Conector{
 
 		try {
 
-		prt = con.prepareStatement("SELECT * FROM reservas WHERE DNI=?");
+		prt = con.prepareStatement("SELECT n_reserva,fecha,id_evento  FROM reservas WHERE DNI=?");
 		
 		prt.setString(1, DNI);
 
@@ -151,8 +153,10 @@ public class ModeloCliente extends Conector{
 		reserva.setnReserva(resultado.getInt(1));
 
 		reserva.setFecha(resultado.getDate(2));
+		reserva.setEvento(eventoM.getEvento(resultado.getInt(3)));	
+		
 
-		reserva.setCliente(getCliente(resultado.getString(4)));
+		
 		
 		reservas.add(reserva);
 

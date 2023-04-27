@@ -75,6 +75,7 @@
       <th scope="col">#</th>
       <th scope="col">nReserva</th>
       <th scope="col">Fecha</th>
+      <th scope="col">Evento</th>
       
      
     </tr>
@@ -86,6 +87,7 @@
       <th scope="row"></th>
       <td>${reserva.nReserva}</td>
       <td>${reserva.fecha}</td>
+      <td>${reserva.evento.nombre}</td>
       
       
       
