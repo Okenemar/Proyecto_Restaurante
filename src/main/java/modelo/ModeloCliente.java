@@ -11,6 +11,7 @@ import clases.Cliente;
 import clases.Reserva;
 import conexion.Conector;
 
+
 public class ModeloCliente extends Conector{
 	
 	public void registrarCliente(Cliente cliente) {
@@ -105,13 +106,15 @@ public class ModeloCliente extends Conector{
 		PreparedStatement prt;
 		
 		try {
-			prt= con.prepareStatement("INSERT INTO reservas (fecha,DNI,nombre, telefono) VALUES (?,?,?,?)");
+			prt= con.prepareStatement("INSERT INTO reservas (fecha,DNI,nombre, telefono,id_evento) VALUES (?,?,?,?,?)");
 			prt.setDate(1, new Date (reserva.getFecha().getTime() ));
 			prt.setString(2, reserva.getCliente().getDni());
 			
 			prt.setString(3, reserva.getCliente().getNombre());
 			
 			prt.setString(4, reserva.getCliente().getTelefono());
+			
+			prt.setInt(5, reserva.getEvento().getcEvento());
 			
 		
 			
@@ -127,7 +130,8 @@ public class ModeloCliente extends Conector{
 
 
 		public ArrayList<Reserva> getReservasUsuario(String DNI){
-
+		ModeloEvento eventoM = new ModeloEvento();
+			eventoM.setConexion(this.con);
 		PreparedStatement prt;
 
 		ArrayList <Reserva> reservas = new ArrayList<>();
@@ -136,7 +140,7 @@ public class ModeloCliente extends Conector{
 
 		try {
 
-		prt = con.prepareStatement("SELECT * FROM reservas WHERE DNI=?");
+		prt = con.prepareStatement("SELECT n_reserva,fecha,id_evento  FROM reservas WHERE DNI=?");
 		
 		prt.setString(1, DNI);
 
@@ -149,8 +153,10 @@ public class ModeloCliente extends Conector{
 		reserva.setnReserva(resultado.getInt(1));
 
 		reserva.setFecha(resultado.getDate(2));
+		reserva.setEvento(eventoM.getEvento(resultado.getInt(3)));	
+		
 
-		reserva.setCliente(getCliente(resultado.getString(4)));
+		
 		
 		reservas.add(reserva);
 
