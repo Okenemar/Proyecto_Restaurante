@@ -1,6 +1,8 @@
 package controladorCliente;
 
 import java.io.IOException;
+import java.util.ArrayList;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -8,7 +10,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import clases.Cliente;
+import clases.Evento;
+
 import modelo.ModeloCliente;
+import modelo.ModeloEvento;
 
 /**
  * Servlet implementation class CargarUsuario
@@ -39,9 +44,14 @@ public class CargarUsuario extends HttpServlet {
 		
 		
 		clienteM.cerrar();
+		ModeloEvento eventoM = new ModeloEvento();
+		eventoM.conectar();
+		ArrayList<Evento> eventos = eventoM.getEventos();
+		
+		eventoM.cerrar();
 		
 		request.setAttribute("cliente", cliente);
-		
+		request.setAttribute("eventos", eventos);
 		
 		request.getRequestDispatcher("VistaReservaUsuario.jsp").forward(request, response);
 		

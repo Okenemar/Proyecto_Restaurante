@@ -1,8 +1,10 @@
 package controladorCliente;
 
 import java.io.IOException;
+
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+
 import java.util.Date;
 
 import javax.servlet.ServletException;
@@ -12,7 +14,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import clases.Cliente;
+import clases.Evento;
 import clases.Reserva;
+
 import modelo.ModeloCliente;
 
 
@@ -35,6 +39,8 @@ public class AñadirReserva extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	
+		
 		
 	}
 
@@ -53,9 +59,10 @@ public class AñadirReserva extends HttpServlet {
 		String Telefono = request.getParameter("Telefono");
 		String Correo = request.getParameter("Correo");
 		SimpleDateFormat formatFecha = new SimpleDateFormat ("yyyy-MM-dd");
+		int idEvento =Integer.parseInt(request.getParameter("evento"));
 		
 		try {
-			Date Fecha = formatFecha.parse(request.getParameter("Fecha"));
+			Date Fecha = formatFecha.parse(request.getParameter("fecha"));
 			reserva.setFecha(Fecha);
 		} catch (ParseException e) {
 			// TODO Auto-generated catch block
@@ -69,6 +76,7 @@ public class AñadirReserva extends HttpServlet {
 		cliente.setApellido(Apellido);
 		cliente.setTelefono(Telefono);
 		cliente.setCorreo(Correo);
+		
 		//comprobar que el cliente existe
 		
 		clienteM.conectar();
@@ -80,15 +88,20 @@ public class AñadirReserva extends HttpServlet {
 			clienteM.registrarCliente(cliente);
 		}
 		
+		
+		Evento evento = new Evento();
+		evento.setcEvento(idEvento);
+		
+		
+		
 		reserva.setCliente(cliente);
-		
-		
+		reserva.setEvento(evento);
 		clienteM.crearReserva(reserva);
 		
 		
 		clienteM.cerrar();
 		
-		
+		response.sendRedirect("VerReservas");
 		
 		
 		
