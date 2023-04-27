@@ -172,17 +172,15 @@ public class ModeloUsuarioPl extends Conector {
 	public void ModificarProductosPlato(Plato plato) {
 		
 		PreparedStatement prt;
-		for(Producto producto:plato.getProductos()) {
-			try {
-				prt = con.prepareStatement("UPDATE plato_producto SET codigo_producto=? WHERE codigo_plato=?");
-				prt.setInt(1, producto.getcProducto());
-				prt.setInt(2, plato.getcPlato());
-				prt.execute();
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
+		try {
+			prt = con.prepareStatement("DELETE FROM `plato_producto` WHERE codigo_plato=?");
+			prt.setInt(1, plato.getcPlato());
+			prt.execute();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
-
+		AñadirProductosPlato(plato);
 		
 	}
 	

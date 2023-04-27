@@ -66,7 +66,7 @@
 									<td>${productosPlato.nombre}</td>
 
 									<td><input class="form-check-input" type="checkbox"
-										id="flexCheckDefault" value="${productosPlato.cProducto}" checked></td>
+										id="flexCheckDefault" value="${productosPlato.cProducto}" checked name="${productosPlato.cProducto}"></td>
 								
 										
 
@@ -81,7 +81,7 @@
 									<td>${productosNOplato.nombre}</td>
 
 									<td><input class="form-check-input" type="checkbox"
-										id="flexCheckDefault" value="${productosNOplato.cProducto}" ></td>
+										id="flexCheckDefault" value="${productosNOplato.cProducto}"name ="${productosNOplato.cProducto}" ></td>
 								
 										
 

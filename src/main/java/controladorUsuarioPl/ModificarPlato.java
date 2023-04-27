@@ -85,10 +85,13 @@ public class ModificarPlato extends HttpServlet {
 		int cPlato = Integer.parseInt(request.getParameter("cPlato"));
 		String nombre = request.getParameter("nombre");
 		double precio = Double.parseDouble(request.getParameter("precio"));
+		
 		ModeloUsuarioPr modeloPr = new ModeloUsuarioPr();
 		modeloPr.conectar();
+		
 		ArrayList<Producto> todosProductos = modeloPr.getProductos();
-		ArrayList<Producto> productosPlato = new ArrayList<Producto>();
+		ArrayList<Producto> productosPlato = new ArrayList<>();
+		
 		Plato plato = new Plato();
 
 		for (Producto producto:todosProductos) {
