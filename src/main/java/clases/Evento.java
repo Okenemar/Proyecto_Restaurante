@@ -1,19 +1,17 @@
 package clases;
 
-import java.util.Date;
+
 
 public class Evento {
 	private int cEvento;
 	private String nombre;
-	private Date fecha;
-	private Usuario usuario; //para el codigo de usuario
 	
-	public Evento(int cEvento, String nombre, Date fecha, Usuario usuario) {
+	
+	public Evento(int cEvento, String nombre) {
 		super();
 		this.cEvento = cEvento;
 		this.nombre = nombre;
-		this.fecha = fecha;
-		this.usuario = usuario;
+		
 	}
 	
 	public Evento() {
@@ -36,25 +34,11 @@ public class Evento {
 		this.nombre = nombre;
 	}
 
-	public Date getFecha() {
-		return fecha;
-	}
-
-	public void setFecha(Date fecha) {
-		this.fecha = fecha;
-	}
-
-	public Usuario getUsuario() {
-		return usuario;
-	}
-
-	public void setUsuario(Usuario usuario) {
-		this.usuario = usuario;
-	}
+	
 
 	@Override
 	public String toString() {
-		return "Evento [cEvento=" + cEvento + ", nombre=" + nombre + ", fecha=" + fecha + ", usuario=" + usuario + "]";
+		return "Evento [cEvento=" + cEvento + ", nombre=" + nombre + "]";
 	}
 	
 	

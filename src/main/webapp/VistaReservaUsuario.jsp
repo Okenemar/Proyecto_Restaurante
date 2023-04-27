@@ -44,7 +44,12 @@
 		<p>Fecha:
 		<input type="date" name="Fecha" /> <br></p>
 		<br>
-		<br>
+		Evento_Realizar:<select name="evento">
+	<option value="0"></option>
+		<c:forEach items="${eventos}" var="evento">
+				<option value="${evento.cEvento}" > ${evento.nombre}</option>	
+		</c:forEach>
+		</select>
 		<input type="submit" class="btn btn-secondary" value="Reservar"/>
 	
 	

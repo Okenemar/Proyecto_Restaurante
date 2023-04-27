@@ -9,8 +9,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-
+import clases.Evento;
 import clases.Reserva;
+import controladorUsuario.ModeloEvento;
 import modelo.ModeloCliente;
 
 /**
@@ -45,7 +46,15 @@ public class VerReservas extends HttpServlet {
 		
 		clienteM.cerrar();
 		
+		ModeloEvento eventoM = new ModeloEvento();
+		eventoM.conectar();
+		ArrayList<Evento> eventos = eventoM.getEventos();
+		
+		eventoM.cerrar();
+		
+		
 		request.setAttribute("reservas", reservas);
+		request.setAttribute("eventos", eventos);
 		
 		request.getRequestDispatcher("VistaReservaUsuario.jsp").forward(request, response);
 		
