@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import clases.Plato;
-import modelo.ModeloUsuarioPl;
+import modeloUsuario.ModeloUsuarioPl;
 
 /**
  * Servlet implementation class VerPlatos

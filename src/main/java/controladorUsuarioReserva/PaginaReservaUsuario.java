@@ -1,4 +1,4 @@
-package controladorCliente;
+package controladorUsuarioReserva;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -8,16 +8,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class PaginaReserva
+ * Servlet implementation class PaginaReservaUsuario
  */
-@WebServlet("/PaginaReserva")
-public class PaginaReserva extends HttpServlet {
+@WebServlet("/PaginaReservaUsuario")
+public class PaginaReservaUsuario extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public PaginaReserva() {
+    public PaginaReservaUsuario() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -27,7 +27,7 @@ public class PaginaReserva extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-				request.getRequestDispatcher("VistaReservaUsuario.jsp").forward(request, response);
+		request.getRequestDispatcher("VistaReservaUsuario.jsp").forward(request, response);
 	}
 
 	/**

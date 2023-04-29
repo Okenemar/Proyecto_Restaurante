@@ -1,4 +1,4 @@
-package modelo;
+package modeloCliente;
 
 
 import java.sql.PreparedStatement;
@@ -10,6 +10,7 @@ import java.sql.Date;
 import clases.Cliente;
 import clases.Reserva;
 import conexion.Conector;
+import modeloUsuario.ModeloEvento;
 
 
 public class ModeloCliente extends Conector{

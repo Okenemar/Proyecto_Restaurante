@@ -1,4 +1,4 @@
-package controladorUsuarioPl;
+package controladorCliente;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -7,19 +7,17 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import modeloUsuario.ModeloUsuarioPl;
-
 /**
- * Servlet implementation class EliminarPlato
+ * Servlet implementation class PaginaReserva
  */
-@WebServlet("/EliminarPlato")
-public class EliminarPlato extends HttpServlet {
+@WebServlet("/PaginaReserva")
+public class PaginaReservaCliente extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public EliminarPlato() {
+    public PaginaReservaCliente() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -29,16 +27,7 @@ public class EliminarPlato extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		int cPlato = Integer.parseInt(request.getParameter("cPlato"));
-		ModeloUsuarioPl usuarioM = new ModeloUsuarioPl();
-		
-		usuarioM.conectar();
-		usuarioM.EliminarProductosPlato(cPlato);
-		usuarioM.EliminarPlato(cPlato);
-		usuarioM.cerrar();
-		
-		response.sendRedirect("VerPlatos");
-		
+				response.sendRedirect("VerReservas");
 	}
 
 	/**

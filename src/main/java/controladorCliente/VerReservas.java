@@ -11,9 +11,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import clases.Evento;
 import clases.Reserva;
-
-import modelo.ModeloCliente;
-import modelo.ModeloEvento;
+import modeloCliente.ModeloCliente;
+import modeloUsuario.ModeloEvento;
 
 /**
  * Servlet implementation class VerReservas
@@ -57,7 +56,7 @@ public class VerReservas extends HttpServlet {
 		request.setAttribute("reservas", reservas);
 		request.setAttribute("eventos", eventos);
 		
-		request.getRequestDispatcher("VistaReservaUsuario.jsp").forward(request, response);
+		request.getRequestDispatcher("VistaReservaCliente.jsp").forward(request, response);
 		
 	}
 

@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import clases.Producto;
-import modelo.ModeloUsuarioPr;
+import modeloUsuario.ModeloUsuarioPr;
 
 /**
  * Servlet implementation class VerProducto

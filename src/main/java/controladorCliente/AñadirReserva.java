@@ -16,8 +16,7 @@ import javax.servlet.http.HttpServletResponse;
 import clases.Cliente;
 import clases.Evento;
 import clases.Reserva;
-
-import modelo.ModeloCliente;
+import modeloCliente.ModeloCliente;
 
 
 /**

@@ -10,66 +10,17 @@
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 </head>
 <body >
-<div class="container">
+
 	<h1 class="fw-bold" style="margin-left:280px;" > GESTIONES RESERVAS</h1>
-	<a href="LoginEmpleado" class="btn btn-success" style="margin-left:1010px;">Sesion Empleado</a> 
-<div class="row 2" >
-<div class="col-6" >
-	<h1 class="fw-bold" > Realizar Reserva</h1>
 
-
-		<form method="get" action="CargarUsuario">
-			<p>Buscar dni
-			<input type="text" name="DNI"/>
-			<input type="submit" class="btn-primary" value="Buscar"> 
-			</p>
-		</form> 
-
-<form method="POST" action="AñadirReserva">
-		
-		<p>DNI:
-		<input type="text" name="DNI2"  value="${cliente.dni}"/><br>
-		</p> 
-		<p>Nombre:
-		<input type="text" name="Nombre"  value="${cliente.nombre}"/> <br> </p>
-		<br>
-		<p>Apellido:
-		<input type="text" name="Apellido" value="${cliente.apellido}"/> <br></p>
-		<br>
-		<p>Telefono:
-		<input type="text" name="Telefono" value="${cliente.telefono}"/> <br></p>
-		<br>
-		<p>Correo:
-		<input type="text" name="Correo"  value="${cliente.correo}"/> <br></p>
-		<br>
-		<p>Fecha:
-		<input type="date" name="fecha" /> <br></p>
-		<br>
-		Evento_Realizar:<select name="evento">
-	<option value="0"></option>
-		<c:forEach items="${eventos}" var="evento">
-				<option value="${evento.cEvento}" > ${evento.nombre}</option>	
-		</c:forEach>
-		</select>
-		<input type="submit" class="btn btn-secondary" value="Reservar"/>
-	
-	
-</form>
-		
-		<a href="VerUsuarios" class="btn btn-primary">Volver</a>	
-</div>
-
-
-<div class="col-6" >
 			<h1 class="fw-bold" > Ver Reservas</h1>
 
-<form method="get" action="VerReservas" >
+<form method="get" action="VerReservasUsuario" >
 			<p>DNI:
 			<input type="text" name="DNI" value="${reserva.cliente.dni}"/>
 			<input type="submit" class="btn-primary" value="Buscar"> 
 			</p>
-</form>
-	
+</form> 	
 <table class="table">
 	
   <thead>
@@ -78,6 +29,8 @@
       <th scope="col">nReserva</th>
       <th scope="col">Fecha</th>
       <th scope="col">Evento</th>
+      <th scope="col"></th>
+      <th scope="col"></th>
       
      
     </tr>
@@ -90,8 +43,9 @@
       <td>${reserva.nReserva}</td>
       <td>${reserva.fecha}</td>
       <td>${reserva.evento.nombre}</td>
-      
-      
+      <td><a href="ModificarReserva?nReserva=${reserva.nReserva}" class="btn btn-primary">modificar</a></td>
+      <td><a href="EliminarReserva?nReserva=${reserva.nReserva}" class="btn btn-danger">eliminar</a></td>
+   
       
     </tr>
     
@@ -101,9 +55,7 @@
   </tbody>
 </table>
 		
-</div>
-</div>
-</div>
+
 
 </body>
 </html>

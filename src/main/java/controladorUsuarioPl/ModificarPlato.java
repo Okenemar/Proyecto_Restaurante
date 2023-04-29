@@ -11,8 +11,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import clases.Plato;
 import clases.Producto;
-import modelo.ModeloUsuarioPl;
-import modelo.ModeloUsuarioPr;
+import modeloUsuario.ModeloUsuarioPl;
+import modeloUsuario.ModeloUsuarioPr;
 
 /**
  * Servlet implementation class ModificarPlato
