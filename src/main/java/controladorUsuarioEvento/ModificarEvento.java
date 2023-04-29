@@ -32,7 +32,24 @@ public class ModificarEvento extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		ModeloUsuario modeloUsuario = new ModeloUsuario();
+		Evento evento = new Evento();
+		try {
+			modeloUsuario.conectar();
+			evento = modeloUsuario.getEvento(Integer.parseInt(request.getParameter("c_evento")));
+			modeloUsuario.cerrar();
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		request.setAttribute("evento", evento);
+		request.getRequestDispatcher("ModificarEvento.jsp").forward(request, response);
 		
+	}
+
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		Evento evento = new Evento();
 		ModeloUsuario modeloUsuario = new ModeloUsuario();
 		int cEvento = Integer.parseInt(request.getParameter("c_evento"));
@@ -46,13 +63,6 @@ public class ModificarEvento extends HttpServlet {
 		modeloUsuario.cerrar();
 		
 		response.sendRedirect("VerEventos");
-	}
-
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	
 		
 		
 		

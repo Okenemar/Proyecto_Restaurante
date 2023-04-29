@@ -12,7 +12,7 @@
 </head>
 <body>
 <h1 class="fw-bold">Modificar Evento</h1>
-<form action="ModificarEvento">
+<form  method="POST" action="ModificarEvento">
 <p class="fw-bold">
 	cEvento:
 	<input type="hidden" name="c_evento" placeholder="c_evento" value="${evento.cEvento}">${evento.cEvento}
