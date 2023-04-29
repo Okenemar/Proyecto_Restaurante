@@ -12,6 +12,7 @@
 <body >
 <div class="container">
 	<h1 class="fw-bold" style="margin-left:280px;" > GESTIONES RESERVAS</h1>
+	<a href="LoginEmpleado" class="btn btn-success" style="margin-left:1010px;">Sesion Empleado</a> 
 <div class="row 2" >
 <div class="col-6" >
 	<h1 class="fw-bold" > Realizar Reserva</h1>
@@ -67,7 +68,8 @@
 			<input type="text" name="DNI" value="${reserva.cliente.dni}"/>
 			<input type="submit" class="btn-primary" value="Buscar"> 
 			</p>
-</form> 	
+</form>
+	
 <table class="table">
 	
   <thead>
