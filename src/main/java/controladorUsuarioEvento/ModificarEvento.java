@@ -44,6 +44,8 @@ public class ModificarEvento extends HttpServlet {
 		modeloUsuario.conectar();
 		modeloUsuario.modificarEvento(evento);
 		modeloUsuario.cerrar();
+		
+		response.sendRedirect("VerEventos");
 	}
 
 	/**

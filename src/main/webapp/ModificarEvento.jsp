@@ -11,17 +11,21 @@
 
 </head>
 <body>
+<h1 class="fw-bold">Modificar Evento</h1>
 <form action="ModificarEvento">
-	<label>cEvento</label>
+<p class="fw-bold">
+	cEvento:
 	<input type="hidden" name="c_evento" placeholder="c_evento" value="${evento.cEvento}">${evento.cEvento}
-	<label>Nombre</label>
+</p>
+	<br>
+
+<p class="fw-bold">
+	Nombre:
 	<input type="text" name="nombre" placeholder="nombre" value="${evento.nombre}">
-	
-	
-	<input type="submit" value="Modificar">
+</p>	
+	<br>	
+	<input type="submit" class="btn btn-secondary"  value="Modificar">
 	</form>
-	<form action="VerEventos">
-		<input type="submit" value="Volver">
-	</form>
+	<a href="VerEventos" class="btn btn-dark">Volver</a>
 </body>
 </html>

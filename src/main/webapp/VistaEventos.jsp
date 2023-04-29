@@ -26,8 +26,7 @@
 		<br>
 		
 		
-		<br>
-		<br>
+		
 		<input type="submit" class="btn btn-secondary" value="Insertar"/>
 	
 	
@@ -48,6 +47,8 @@
       <th scope="col">#</th>
       <th scope="col">cEvento</th>
       <th scope="col">nombre</th>
+      <th scope="col"></th>
+      <th scope="col"></th>
      
       
      
@@ -60,8 +61,8 @@
       <th scope="row"></th>
       <td>${evento.cEvento}</td>
       <td>${evento.nombre}</td>
-      <td><a href="FormularioModificarEvento?c_evento=${evento.cEvento}">modificar</a></td>
-      <td><a href="EliminarEvento?c_evento=${evento.cEvento}">eliminar</a></td>
+      <td><a href="FormularioModificarEvento?c_evento=${evento.cEvento}" class="btn btn-secondary ">modificar</a></td>
+      <td><a href="EliminarEvento?c_evento=${evento.cEvento}" class="btn btn-danger">eliminar</a></td>
       
    
       
