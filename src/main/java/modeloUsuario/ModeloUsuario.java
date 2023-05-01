@@ -44,20 +44,7 @@ public class ModeloUsuario extends Conector{
 		
 	}
 	
-	public void modificarEvento(Evento evento) {
-		try {
-			prt = con.prepareStatement("UPDATE eventos SET nombre=? WHERE c_evento=?");
-			
-			
-			prt.setString(1, evento.getNombre());
-			prt.setInt(2, evento.getcEvento());
-			
-			prt.executeUpdate();
-
-		} catch (Exception e) {
-			// TODO: handle exception
-		}
-	}
+	
 	
 	public Evento getEvento(int cEvento) throws SQLException {
 		Evento evento = new Evento();

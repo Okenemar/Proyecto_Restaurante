@@ -98,7 +98,6 @@
       <td>${evento.cEvento}</td>
       <td>${evento.nombre}</td>
       <c:if test="${sessionScope.usuarioLogueado.rol.id == 1}">
-      <td><a href="ModificarEvento?c_evento=${evento.cEvento}" class="btn btn-secondary ">modificar</a></td>
       <td><a href="EliminarEvento?c_evento=${evento.cEvento}" class="btn btn-danger">eliminar</a></td>
       
       </c:if>

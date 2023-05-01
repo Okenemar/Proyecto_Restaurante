@@ -68,6 +68,7 @@
 				</div>
 			</div>
 			<input type="submit" class="btn btn-secondary" value="Guardar"/>
+			<a href="PaginaPlato" class="btn btn-dark">Volver </a> 
 		</form>
 	</div>
 

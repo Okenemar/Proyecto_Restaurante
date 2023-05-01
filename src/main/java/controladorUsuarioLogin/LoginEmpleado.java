@@ -71,7 +71,7 @@ public class LoginEmpleado extends HttpServlet {
 			
 		}
 		else {
-			request.getRequestDispatcher("VistaLoging.jsp").forward(request, response);
+			response.sendRedirect("PaginaReservaCliente");
 		}
 		
 		usuarioM.cerrar();
