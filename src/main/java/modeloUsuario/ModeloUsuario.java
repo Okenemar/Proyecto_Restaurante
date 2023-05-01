@@ -155,16 +155,14 @@ public class ModeloUsuario extends Conector{
 		
 		public void insertarUsuario(Usuario usuario) {
 			try {
-				prt = con.prepareStatement("INSERT INTO usuarios (cUsuario, nombre, apellido, telefono, correo_trabajo, trabajo, mgr, rol) VALUES(?,?,?,?,?,?,?,?)");
+				prt = con.prepareStatement("INSERT INTO usuarios(nombre,apellido,telefono,correo_trabajo,id_rol) VALUES (?,?,?,?,?)");
 				
-				prt.setInt(1, usuario.getcUsuario());
-				prt.setString(2, usuario.getNombre());
-				prt.setString(3, usuario.getApellido());
-				prt.setString(4, usuario.getTelefono());
-				prt.setString(5, usuario.getCorreoTrabajo());
-				prt.setString(6, usuario.getTrabajo());
-				prt.setInt(7, usuario.getMgr());
-				prt.setInt(8, usuario.getRol().getId());
+				
+				prt.setString(1, usuario.getNombre());
+				prt.setString(2, usuario.getApellido());
+				prt.setString(3, usuario.getTelefono());
+				prt.setString(4, usuario.getCorreoTrabajo());
+				prt.setInt(5, usuario.getRol().getId());
 				
 				prt.execute();
 			} catch (Exception e) {
@@ -174,6 +172,9 @@ public class ModeloUsuario extends Conector{
 		}
 		
 		public ArrayList<Usuario> getUsuarios(){
+			ModeloRolUsuario rolUM = new ModeloRolUsuario ();
+			   rolUM.setConexion(this.con);
+			
 			PreparedStatement prt;
 			ArrayList <Usuario> usuarios = new ArrayList <>();
 			Usuario usuario = new Usuario();
@@ -190,11 +191,9 @@ public class ModeloUsuario extends Conector{
 					usuario.setApellido(resultado.getString(3));
 					usuario.setTelefono(resultado.getString(4));
 					usuario.setCorreoTrabajo(resultado.getString(5));
-					usuario.setTrabajo(resultado.getString(6));
-					usuario.setMgr(resultado.getInt(7));
-					RolUsuario rolusuario = new RolUsuario();
-					rolusuario.setId(resultado.getInt(8));
-					usuario.setRol(rolusuario);
+					
+					
+					usuario.setRol(rolUM.getRol(resultado.getInt(6)));
 					
 					usuarios.add(usuario);
 				}
@@ -206,24 +205,22 @@ public class ModeloUsuario extends Conector{
 			return usuarios;
 			}
 		public Usuario getUsuario(int cUsuario) throws SQLException  {
+			ModeloRolUsuario rolUM = new ModeloRolUsuario ();
+			   rolUM.setConexion(this.con);
 			Usuario usuario = new Usuario();
 		
-				prt=con.prepareStatement("SELECT * FROM usuarios WHERE cUsuario=?");
+				prt=con.prepareStatement("SELECT c_usuario,nombre,apellido,telefono,correo_trabajo FROM usuarios WHERE c_usuario=?");
 				prt.setInt(1, cUsuario);
 				
 				ResultSet resultado = prt.executeQuery();
 				resultado.next();
 				
-				usuario.setcUsuario(resultado.getInt("cUsuario"));
+				usuario.setcUsuario(resultado.getInt("c_usuario"));
 				usuario.setNombre(resultado.getString("nombre"));
 				usuario.setApellido(resultado.getString("apellido"));
 				usuario.setTelefono(resultado.getString("telefono"));
 				usuario.setCorreoTrabajo(resultado.getString("correo_trabajo"));
-				usuario.setTrabajo(resultado.getString("trabajo"));
-				usuario.setMgr(resultado.getInt("mgr"));
-				RolUsuario rolusuario = new RolUsuario();
-				rolusuario.setId(resultado.getInt("rol"));
-				usuario.setRol(rolusuario);
+			
 				
 				return usuario;
 				
@@ -232,7 +229,7 @@ public class ModeloUsuario extends Conector{
 		
 		public void eliminarUsuario(int cUsuario) {
 			try {
-				prt = con.prepareStatement("DELETE FROM usuarios WHERE cUsuario = ?");
+				prt = con.prepareStatement("DELETE FROM usuarios WHERE c_usuario = ?");
 				
 				prt.setInt(1, cUsuario);
 
@@ -245,17 +242,15 @@ public class ModeloUsuario extends Conector{
 		public void modificarUsuario(Usuario usuario) {
 			
 			try {
-				 prt = con.prepareStatement("UPDATE usuarios SET cUsuario=?,nombre=?,apellido=?,telefono=?,correo_trabajo=?,trabajo=?,mgr=?,rol=? WHERE cUsuario=?");
+				 prt = con.prepareStatement("UPDATE usuarios SET c_usuario=?,nombre=?,apellido=?,telefono=?,correo_trabajo=?,id_rol=? WHERE c_usuario=?");
 				 
 				 prt.setInt(1, usuario.getcUsuario());
 				 prt.setString(2, usuario.getNombre());
 				 prt.setString(3, usuario.getApellido());
 				 prt.setString(4, usuario.getTelefono());
 				 prt.setString(5, usuario.getCorreoTrabajo());
-				 prt.setString(6, usuario.getTrabajo());
-				 prt.setInt(7, usuario.getMgr());
-				 prt.setInt(8, usuario.getRol().getId());
-				 prt.setInt(9, usuario.getcUsuario());
+				 prt.setInt(6, usuario.getRol().getId());
+				 prt.setInt(7, usuario.getcUsuario());
 				 
 				 prt.executeUpdate();
 			} catch (Exception e) {

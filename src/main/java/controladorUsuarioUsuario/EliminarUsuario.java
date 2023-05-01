@@ -28,7 +28,7 @@ public class EliminarUsuario extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		int cUsuario = Integer.parseInt(request.getParameter("c_usuario"));
+		int cUsuario = Integer.parseInt(request.getParameter("cUsuario"));
 		
 		ModeloUsuario modeloUsuario = new ModeloUsuario();
 		modeloUsuario.conectar();

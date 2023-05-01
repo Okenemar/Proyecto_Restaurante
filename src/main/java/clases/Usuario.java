@@ -7,20 +7,18 @@ public class Usuario {
 	private String apellido;
 	private String telefono;
 	private String correoTrabajo;
-	private String trabajo;
-	private int mgr;
+	
 	private RolUsuario rol;
 	
-	public Usuario(int cUsuario, String nombre, String apellido, String telefono, String correoTrabajo, String trabajo,
-			int mgr, RolUsuario rol) {
+	public Usuario(int cUsuario, String nombre, String apellido, String telefono, String correoTrabajo,
+		RolUsuario rol) {
 		super();
 		this.cUsuario = cUsuario;
 		this.nombre = nombre;
 		this.apellido = apellido;
 		this.telefono = telefono;
 		this.correoTrabajo = correoTrabajo;
-		this.trabajo = trabajo;
-		this.mgr = mgr;
+		
 		this.rol = rol;
 	}
 	
@@ -68,21 +66,6 @@ public class Usuario {
 		this.correoTrabajo = correoTrabajo;
 	}
 
-	public String getTrabajo() {
-		return trabajo;
-	}
-
-	public void setTrabajo(String trabajo) {
-		this.trabajo = trabajo;
-	}
-
-	public int getMgr() {
-		return mgr;
-	}
-
-	public void setMgr(int mgr) {
-		this.mgr = mgr;
-	}
 
 	public RolUsuario getRol() {
 		return rol;
@@ -95,8 +78,7 @@ public class Usuario {
 	@Override
 	public String toString() {
 		return "Usuario [cUsuario=" + cUsuario + ", nombre=" + nombre + ", apellido=" + apellido + ", telefono="
-				+ telefono + ", correoTrabajo=" + correoTrabajo + ", trabajo=" + trabajo + ", mgr=" + mgr + ", rol="
-				+ rol + "]";
+				+ telefono + ", correoTrabajo=" + correoTrabajo +  ", rol="+ rol + "]";
 	}
 	
 	
