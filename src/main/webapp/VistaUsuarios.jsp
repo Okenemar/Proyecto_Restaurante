@@ -58,9 +58,9 @@
       
       <th scope="col"></th>
        
-      
+      <c:if test="${sessionScope.usuarioLogueado.rol.id == 1}">
       <td><a href="InsertarUsuario" class="btn btn-dark">Registrar </a> </td>
-      
+      </c:if>
      
     </tr>
   </thead>
@@ -77,9 +77,10 @@
       <td>${usuario.rol.nombre}</td>
       
       
-      
+      <c:if test="${sessionScope.usuarioLogueado.rol.id == 1}">
       <td><a href="ModificarUsuario?cUsuario=${usuario.cUsuario}" class="btn btn-secondary ">Modificar </a> </td>
       <td><a href="EliminarUsuario?cUsuario=${usuario.cUsuario}" class="btn btn-danger" >eliminar </a> </td>
+   	  </c:if>
     </tr>
     
     </c:forEach>

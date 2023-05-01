@@ -8,7 +8,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
+import javax.servlet.http.HttpSession;
 
 import clases.RolUsuario;
 import clases.Usuario;
@@ -35,6 +35,14 @@ public class ModificarUsuario extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		HttpSession session = request.getSession();
+		Usuario usuarioLogueado = (Usuario) session.getAttribute("usuarioLogueado");
+
+		if (usuarioLogueado == null) {// no logeado
+			response.sendRedirect("PaginaReservaCliente");
+		} else {
+			
+			if (usuarioLogueado.getRol().getId()==(1)) {
 		int id = Integer.parseInt(request.getParameter("cUsuario"));
 		
 		ModeloUsuario usuarioM = new ModeloUsuario();
@@ -57,6 +65,11 @@ public class ModificarUsuario extends HttpServlet {
 		request.setAttribute("roles", roles);
 				
 		request.getRequestDispatcher("ModificarUsuario.jsp").forward(request, response);
+	}
+			else {
+				response.sendRedirect("PaginaUsuario");
+			}
+		}
 	}
 
 	/**

@@ -55,9 +55,9 @@
       
       <th scope="col"></th>
        <th scope="col"></th>
-      
+      <c:if test="${sessionScope.usuarioLogueado.rol.id == 1}">
       <td><a href="RegistrarProducto" class="btn btn-dark">Registrar </a> </td>
-      
+      </c:if>
      
     </tr>
   </thead>
@@ -71,10 +71,11 @@
       <td>${producto.cantidad}</td>
       <td>${producto.precio}</td>
       
-      
+      <c:if test="${sessionScope.usuarioLogueado.rol.id == 1}">
       <td><a href="VerProducto?cProducto=${producto.cProducto}" class="btn btn-primary ">Ver </a> </td>
       <td><a href="ModificarProducto?cProducto=${producto.cProducto}" class="btn btn-secondary ">Modificar </a> </td>
       <td><a href="EliminarProducto?cProducto=${producto.cProducto}" class="btn btn-danger" >eliminar </a> </td>
+    	</c:if>
     </tr>
     
     </c:forEach>

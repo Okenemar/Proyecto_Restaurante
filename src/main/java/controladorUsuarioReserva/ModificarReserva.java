@@ -10,10 +10,12 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import clases.Cliente;
 import clases.Evento;
 import clases.Reserva;
+import clases.Usuario;
 import modeloUsuario.ModeloEvento;
 import 	modeloUsuario.ModeloUsuario;
 
@@ -35,6 +37,14 @@ public class ModificarReserva extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		HttpSession session = request.getSession();
+		Usuario usuarioLogueado = (Usuario) session.getAttribute("usuarioLogueado");
+
+		if (usuarioLogueado == null) {// no logeado
+			response.sendRedirect("PaginaReservaCliente");
+		} else {
+			
+			if (usuarioLogueado.getRol().getId()==(1)) {
 		ModeloUsuario modeloUsuario = new ModeloUsuario();
 		Reserva reserva = new Reserva();
 		int nReserva=Integer.parseInt(request.getParameter("nReserva"));
@@ -58,7 +68,12 @@ public class ModificarReserva extends HttpServlet {
 		
 		request.setAttribute("reserva", reserva);
 		request.getRequestDispatcher("ModificarReserva.jsp").forward(request, response);
-	
+			}
+			
+			else {
+				response.sendRedirect("PaginaReservaUsuario");
+			}
+		}
 		
 	}
 

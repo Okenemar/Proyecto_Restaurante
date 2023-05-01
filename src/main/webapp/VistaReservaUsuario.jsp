@@ -76,10 +76,11 @@
       <td>${reserva.nReserva}</td>
       <td>${reserva.fecha}</td>
       <td>${reserva.evento.nombre}</td>
+      <c:if test="${sessionScope.usuarioLogueado.rol.id == 1}">
       <td><a href="ModificarReserva?nReserva=${reserva.nReserva}" class="btn btn-primary">modificar</a></td>
       <td><a href="EliminarReserva?nReserva=${reserva.nReserva}" class="btn btn-danger">eliminar</a></td>
    
-      
+      </c:if>
     </tr>
     
     </c:forEach>

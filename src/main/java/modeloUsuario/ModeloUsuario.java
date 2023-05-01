@@ -18,10 +18,10 @@ public class ModeloUsuario extends Conector{
 	PreparedStatement prt;
 	public void insertarEvento(Evento evento) {
 	try {
-		prt = con.prepareStatement("INSERT INTO eventos (c_evento, nombre) VALUES(?,?)");
+		prt = con.prepareStatement("INSERT INTO eventos (nombre) VALUES(?)");
 		
-		prt.setInt(1, evento.getcEvento());
-		prt.setString(2, evento.getNombre());
+		
+		prt.setString(1, evento.getNombre());
 		
 		
 		prt.execute();
@@ -46,11 +46,11 @@ public class ModeloUsuario extends Conector{
 	
 	public void modificarEvento(Evento evento) {
 		try {
-			prt = con.prepareStatement("UPDATE eventos SET c_evento=?, nombre=? WHERE c_evento=?");
+			prt = con.prepareStatement("UPDATE eventos SET nombre=? WHERE c_evento=?");
 			
-			prt.setInt(1, evento.getcEvento());
-			prt.setString(2, evento.getNombre());
-			prt.setInt(3, evento.getcEvento());
+			
+			prt.setString(1, evento.getNombre());
+			prt.setInt(2, evento.getcEvento());
 			
 			prt.executeUpdate();
 
@@ -211,7 +211,7 @@ public class ModeloUsuario extends Conector{
 			   rolUM.setConexion(this.con);
 			Usuario usuario = new Usuario();
 		
-				prt=con.prepareStatement("SELECT c_usuario,nombre,apellido,contraseña,telefono,correo_trabajo FROM usuarios WHERE c_usuario=?");
+				prt=con.prepareStatement("SELECT c_usuario,nombre,apellido,contraseña,telefono,correo_trabajo,id_rol FROM usuarios WHERE c_usuario=?");
 				prt.setInt(1, cUsuario);
 				
 				ResultSet resultado = prt.executeQuery();
@@ -223,7 +223,7 @@ public class ModeloUsuario extends Conector{
 				usuario.setContraseña(resultado.getString("contraseña"));
 				usuario.setTelefono(resultado.getString("telefono"));
 				usuario.setCorreoTrabajo(resultado.getString("correo_trabajo"));
-			
+				usuario.setRol(rolUM.getRol(resultado.getInt("id_rol")));
 				
 				return usuario;
 				

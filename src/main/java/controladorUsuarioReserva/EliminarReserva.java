@@ -6,7 +6,9 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
+import clases.Usuario;
 import modeloUsuario.ModeloUsuario;
 
 /**
@@ -28,6 +30,14 @@ public class EliminarReserva extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		HttpSession session = request.getSession();
+		Usuario usuarioLogueado = (Usuario) session.getAttribute("usuarioLogueado");
+
+		if (usuarioLogueado == null) {// no logeado
+			response.sendRedirect("PaginaReservaCliente");
+		} else {
+			
+			if (usuarioLogueado.getRol().getId()==(1)) {
 		int nReserva = Integer.parseInt(request.getParameter("nReserva"));
 		
 		ModeloUsuario modeloUsuario = new ModeloUsuario();
@@ -35,6 +45,11 @@ public class EliminarReserva extends HttpServlet {
 		modeloUsuario.eliminarReserva(nReserva);
 		
 		request.getRequestDispatcher("VistaReservaUsuario.jsp").forward(request, response);
+	}
+			else {
+				response.sendRedirect("PaginaReservaUsuario");
+			}
+		}
 	}
 
 	/**

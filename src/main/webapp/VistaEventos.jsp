@@ -46,13 +46,13 @@
 <div class="container">
 	<h1 class="fw-bold" style="margin-left:280px;" > GESTIONES EVENTOS</h1>
 <div class="row 2" >
+<c:if test="${sessionScope.usuarioLogueado.rol.id == 1}">
 <div class="col-6" >
 	<h1 class="fw-bold" > Insertar Evento</h1>
 
 <form method="POST" action="InsertarEvento">
 		
-		<p>cEvento:
-		<input type="text" name="c_evento" /> <br></p>
+		
 		<p>Nombre:
 		<input type="text" name="nombre" /> <br></p>
 		<br>
@@ -66,7 +66,7 @@
 </form>
 		
 </div>
-
+</c:if>
 
 <div class="col-6" >
 	
@@ -97,9 +97,11 @@
       <th scope="row"></th>
       <td>${evento.cEvento}</td>
       <td>${evento.nombre}</td>
+      <c:if test="${sessionScope.usuarioLogueado.rol.id == 1}">
       <td><a href="ModificarEvento?c_evento=${evento.cEvento}" class="btn btn-secondary ">modificar</a></td>
       <td><a href="EliminarEvento?c_evento=${evento.cEvento}" class="btn btn-danger">eliminar</a></td>
       
+      </c:if>
    
       
     </tr>

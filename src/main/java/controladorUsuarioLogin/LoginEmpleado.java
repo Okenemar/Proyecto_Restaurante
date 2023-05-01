@@ -61,6 +61,7 @@ public class LoginEmpleado extends HttpServlet {
 					session.setAttribute("usuarioLogueado", usuarioLogueado);
 					
 					response.sendRedirect("PaginaUsuario");
+					
 				} catch (SQLException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();

@@ -55,9 +55,9 @@
       
       <th scope="col"></th>
        <th scope="col"></th>
-      
+      <c:if test="${sessionScope.usuarioLogueado.rol.id == 1}">
       <td><a href="RegistrarPlato" class="btn btn-dark">Registrar </a> </td>
-      
+      </c:if>
      
     </tr>
   </thead>
@@ -70,10 +70,11 @@
       <td>${plato.nombre}</td>
       <td>${plato.precio}</td>
       
-      
+      <c:if test="${sessionScope.usuarioLogueado.rol.id == 1}">
       <td><a href="VerPlato?cPlato=${plato.cPlato}" class="btn btn-primary ">Ver </a> </td>
       <td><a href="ModificarPlato?cPlato=${plato.cPlato}" class="btn btn-secondary ">Modificar </a> </td>
       <td><a href="EliminarPlato?cPlato=${plato.cPlato}" class="btn btn-danger" >eliminar </a> </td>
+      </c:if>
     </tr>
     
     </c:forEach>

@@ -7,8 +7,10 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import clases.Evento;
+import javax.servlet.http.HttpSession;
 
+import clases.Evento;
+import clases.Usuario;
 import modeloUsuario.ModeloUsuario;
 
 /**
@@ -38,14 +40,21 @@ public class InsertarEvento extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+		HttpSession session = request.getSession();
+		Usuario usuarioLogueado = (Usuario) session.getAttribute("usuarioLogueado");
+
+		if (usuarioLogueado == null) {// no logeado
+			response.sendRedirect("PaginaReservaCliente");
+		} else {
+			
+			if (usuarioLogueado.getRol().getId()==(1)) {
 		Evento evento = new Evento();
 		ModeloUsuario modeloUsuario = new ModeloUsuario();
-		int cEvento = Integer.parseInt(request.getParameter("c_evento"));
+		
 		String nombre = request.getParameter("nombre");
 		
 		
-		evento.setcEvento(cEvento);
+		
 		evento.setNombre(nombre);
 		
 		
@@ -53,7 +62,12 @@ public class InsertarEvento extends HttpServlet {
 		modeloUsuario.insertarEvento(evento);
 		modeloUsuario.cerrar();
 		response.sendRedirect("VerEventos");
-
+			}
+			else {
+				response.sendRedirect("PaginaEvento");
+			}
+		
+	}
 		
 	}
 

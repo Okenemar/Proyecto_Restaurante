@@ -8,9 +8,11 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import clases.Evento;
 import clases.Reserva;
+import clases.Usuario;
 import modeloCliente.ModeloCliente;
 import modeloUsuario.ModeloEvento;
 
@@ -35,6 +37,12 @@ public class VerReservasUsuario extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		HttpSession session = request.getSession();
+		Usuario usuarioLogueado = (Usuario) session.getAttribute("usuarioLogueado");
+		
+		if(usuarioLogueado == null) {
+			response.sendRedirect("PaginaReservaCliente");
+		}else {
 		ModeloCliente clienteM = new ModeloCliente();
 		
 		ArrayList <Reserva> reservas = new ArrayList<Reserva>();
@@ -57,6 +65,7 @@ public class VerReservasUsuario extends HttpServlet {
 		request.setAttribute("eventos", eventos);
 		
 		request.getRequestDispatcher("VistaReservaUsuario.jsp").forward(request, response);
+	}
 	}
 
 	/**

@@ -8,6 +8,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import clases.Usuario;
 import modeloUsuario.ModeloUsuario;
@@ -32,6 +33,12 @@ public class VerUsuarios extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		HttpSession session = request.getSession();
+		Usuario usuarioLogueado = (Usuario) session.getAttribute("usuarioLogueado");
+		
+		if(usuarioLogueado == null) {
+			response.sendRedirect("PaginaReservaCliente");
+		}else {
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 		ModeloUsuario modeloUsuario = new ModeloUsuario();
 		modeloUsuario.conectar();
@@ -42,8 +49,9 @@ public class VerUsuarios extends HttpServlet {
 		modeloUsuario.cerrar();
 		
 		request.setAttribute("usuarios", usuarios);
+		session.setAttribute("usuarioLogueado", usuarioLogueado);
 		request.getRequestDispatcher("VistaUsuarios.jsp").forward(request, response);
-		
+		}
 	}
 
 	/**
