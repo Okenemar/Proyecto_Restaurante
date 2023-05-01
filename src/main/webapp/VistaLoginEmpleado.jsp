@@ -8,13 +8,13 @@
 </head>
 <body>
 		<h1 class="fw-bold" > Iniciar Sesion</h1>
-		<form method="POST" action="LoginInicio">
+		<form method="POST" action="LoginEmpleado">
 		
-		<p>Nombre:
-		<input type="text" name="nombre" /> <br></p>
+		<p>CºUsuario:
+		<input type="text" name="cUsuario" /> <br></p>
 		<br>
 		<p>Contraseña:
-		<input type="password" name="password" /> <br></p>
+		<input type="password" name="contraseña" /> <br></p>
 		<br>
 	
 		<input type="submit" class="btn btn-secondary" value="Loguear"/>

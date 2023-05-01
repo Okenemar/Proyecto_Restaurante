@@ -33,11 +33,13 @@
                 <a class="nav-link active" href="PaginaPlato">GESTIONAR PLATOS</a>
               </li>
             </ul>
+            <form class="d-flex">
+                <a href="CerrarSesion" class="btn btn-danger">Cerrar Sesion </a> 
+              </form>
             
           </div>
         </div>
  </nav>
-</head>
 </head>
 <body>
 	

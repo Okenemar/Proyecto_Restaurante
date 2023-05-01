@@ -262,5 +262,37 @@ public class ModeloUsuario extends Conector{
 			}
 			
 		}
+		
+		public String getContrasena(int cUsuario) {
+			
+			Usuario usuario = new Usuario();
+			
+			try {
+				PreparedStatement prt;
+				
+				prt= con.prepareStatement("SELECT contraseña FROM usuarios WHERE c_usuario=?");
+				
+				prt.setInt(1, cUsuario);
+				
+				ResultSet result = prt.executeQuery();
+				
+				while(result.next()) {
+				
+					usuario.setContraseña(result.getString(1));
+					
+
+					
+					return usuario.getContraseña();	
+				}
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+			
+			return usuario.getContraseña();	
+			
+			
+		}
 	
 	}

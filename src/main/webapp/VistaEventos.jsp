@@ -34,6 +34,9 @@
                 <a class="nav-link active" href="PaginaPlato">GESTIONAR PLATOS</a>
               </li>
             </ul>
+            <form class="d-flex">
+                <a href="CerrarSesion" class="btn btn-danger">Cerrar Sesion </a> 
+              </form>
             
           </div>
         </div>
@@ -57,6 +60,7 @@
 		
 		
 		<input type="submit" class="btn btn-secondary" value="Insertar"/>
+		
 	
 	
 </form>
@@ -65,7 +69,10 @@
 
 
 <div class="col-6" >
+	
 			<h1 class="fw-bold" > Ver Eventos</h1>
+			
+			
 
 <form method="get" action="VerEventos" >
 				
