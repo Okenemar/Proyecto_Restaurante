@@ -22,6 +22,9 @@
 		<p>Apellido:
 		<input type="text" name="apellido" /> <br></p>
 		<br>
+		<p>Contraseña:
+		<input type="text" name="contraseña" /> <br></p>
+		<br>
 		<p>Telefono:
 		<input type="text" name="telefono" /> <br></p>
 		<br>

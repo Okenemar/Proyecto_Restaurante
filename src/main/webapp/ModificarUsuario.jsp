@@ -34,6 +34,10 @@
 						Apellido: <input type="text" name="apellido"
 							value="${usuario.apellido}" /> <br>
 					</p>
+					<p class="fw-bold">
+						Contraseña: <input type="text" name="contraseña"
+							value="${usuario.contraseña}" /> <br>
+					</p>
 					<br>
 				<p class="fw-bold">
 						Telefono: <input type="text" name="telefono"

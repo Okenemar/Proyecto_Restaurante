@@ -71,6 +71,7 @@ public class ModificarUsuario extends HttpServlet {
 		int cUsuario = Integer.parseInt(request.getParameter("cUsuario"));
 		String nombre = request.getParameter("nombre");
 		String apellido = request.getParameter("apellido");
+		String contraseña =request.getParameter("contraseña");
 		String telefono = request.getParameter("telefono");
 		String correoTrabajo = request.getParameter("correoTrabajo");
 		
@@ -79,6 +80,7 @@ public class ModificarUsuario extends HttpServlet {
 		usuario.setcUsuario(cUsuario);
 		usuario.setNombre(nombre);
 		usuario.setApellido(apellido);
+		usuario.setContraseña(contraseña);
 		usuario.setTelefono(telefono);
 		usuario.setCorreoTrabajo(correoTrabajo);
 		
