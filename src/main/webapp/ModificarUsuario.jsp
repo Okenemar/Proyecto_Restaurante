@@ -30,10 +30,10 @@
 	<label>Rol</label>
 	<select name="rol">
 		<c:forEach items="${roles}" var="rolUsuario">
-		<c:if test="${rolUsuario.id == rolUsuario.id }">
+		<c:if test="${rolUsuario.id == usuario.rol.id }">
 			<option value="${rolUsuario.id}" selected> ${rolUsuario.nombre} </option>
 		</c:if>
-		<c:if test="${rolUsuario.id != rolUsuario.id }">
+		<c:if test="${rolUsuario.id != usuario.rol.id }">
 			<option value="${rolUsuario.id}" selected> ${rolUsuario.nombre} </option>
 		</c:if>
 		
