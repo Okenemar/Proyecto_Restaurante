@@ -71,8 +71,8 @@
       <td>${producto.cantidad}</td>
       <td>${producto.precio}</td>
       
-      <c:if test="${sessionScope.usuarioLogueado.rol.id == 1}">
       <td><a href="VerProducto?cProducto=${producto.cProducto}" class="btn btn-primary ">Ver </a> </td>
+      <c:if test="${sessionScope.usuarioLogueado.rol.id == 1}">
       <td><a href="ModificarProducto?cProducto=${producto.cProducto}" class="btn btn-secondary ">Modificar </a> </td>
       <td><a href="EliminarProducto?cProducto=${producto.cProducto}" class="btn btn-danger" >eliminar </a> </td>
     	</c:if>

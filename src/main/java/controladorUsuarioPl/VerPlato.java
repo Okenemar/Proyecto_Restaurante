@@ -41,7 +41,7 @@ public class VerPlato extends HttpServlet {
 			response.sendRedirect("PaginaReservaCliente");
 		} else {
 			
-			if (usuarioLogueado.getRol().getId()==(1)) {
+			
 		int cPlato = Integer.parseInt(request.getParameter("cPlato"));
 		Plato plato = new Plato();
 		//ArrayList <Producto> productos = new ArrayList<>();
@@ -61,10 +61,8 @@ public class VerPlato extends HttpServlet {
 		
 		request.getRequestDispatcher("VistaPlato.jsp").forward(request, response);
 		
-			}
-			else {
-				response.sendRedirect("PaginaPlato");
-			}
+			
+			
 		}
 	}
 

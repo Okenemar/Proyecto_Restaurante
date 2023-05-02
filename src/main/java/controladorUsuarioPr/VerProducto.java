@@ -38,7 +38,7 @@ public class VerProducto extends HttpServlet {
 			response.sendRedirect("PaginaReservaCliente");
 		} else {
 			
-			if (usuarioLogueado.getRol().getId()==(1)) {
+			
 		int cProducto = Integer.parseInt(request.getParameter("cProducto"));
 		
 			
@@ -55,10 +55,6 @@ public class VerProducto extends HttpServlet {
 			
 			request.getRequestDispatcher( "VerProducto.jsp").forward(request, response);
 		
-	}
-			else {
-				response.sendRedirect("PaginaProductos");
-			}
 		}
 	}
 

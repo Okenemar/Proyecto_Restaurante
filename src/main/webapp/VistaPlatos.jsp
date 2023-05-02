@@ -70,8 +70,8 @@
       <td>${plato.nombre}</td>
       <td>${plato.precio}</td>
       
-      <c:if test="${sessionScope.usuarioLogueado.rol.id == 1}">
       <td><a href="VerPlato?cPlato=${plato.cPlato}" class="btn btn-primary ">Ver </a> </td>
+      <c:if test="${sessionScope.usuarioLogueado.rol.id == 1}">
       <td><a href="ModificarPlato?cPlato=${plato.cPlato}" class="btn btn-secondary ">Modificar </a> </td>
       <td><a href="EliminarPlato?cPlato=${plato.cPlato}" class="btn btn-danger" >eliminar </a> </td>
       </c:if>
