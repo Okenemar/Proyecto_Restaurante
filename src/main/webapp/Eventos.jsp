@@ -158,6 +158,20 @@ body {
 						</div>
 					</div>
 				</div>
+				<div class="col-md-6">
+					<div class="card">
+						<img class="card-img-top"
+							src="https://cdn.businessinsider.es/sites/navi.axelspringer.es/public/media/image/2022/03/primera-comunion-2661919.jpg"
+							alt="Imagen de ejemplo">
+						<div class="card-overlay">
+							<p class="card-text text-center">Celebre la Primera Comunión de su hijo o
+								hija en nuestro restaurante y disfrute de una experiencia
+								inolvidable. Nos aseguraremos de que el día de su hijo o hija
+								sea especial y memorable al ofrecer opciones de menú adaptadas a
+								las necesidades de los más pequeños y a sus invitados adultos.</p>
+						</div>
+					</div>
+				</div>
 			</div>
 		</div>
 

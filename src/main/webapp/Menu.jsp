@@ -23,6 +23,8 @@
 	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+
 <style>
 body {
 	background-color: #1C1C1C;
@@ -45,6 +47,11 @@ body {
 	color: black;
 }
 
+@media ( width < 500px) {
+	.iframe {
+		padding-bottom: 25%
+	}
+}
 </style>
 </head>
 <body>
@@ -79,37 +86,41 @@ body {
 	</nav>
 
 	<!-- Página de inicio -->
-	<header class="jumbotron jumbotron-fluid bg-black">
+	<header class="jumbotron jumbotron-fluid bg-black"
+		style="height: 80vh;">
 		<div class="container text-center">
 			<br> <br> <br>
 		</div>
-		
+
 		<div class="container">
 			<div class="row">
 				<div class="col text-center">
 					<h1>Nuestros Menús</h1>
-					<p>En nuestro restaurante ofrecemos 4 tipos de menús: comidas,
+					<p> Nuestro restaurante ofrece 4 tipos de menús: comidas,
 						cenas, bodas y bautizos. Cada uno de estos menús cuentan con una
-						calidad de producto impecable. Los menúes pueden ir variando
-						dependiendo de la semana o del mes.</p>
-					<div class="text-center">
-						<div
-							style="position: relative; padding: 30%; box-shadow: 0 2px 8px 0 rgba(63, 69, 81, 0.16); margin-top: 1.6em; margin-bottom: 0.9em; overflow: hidden; border-radius: 8px; will-change: transform;"
-							class="mx-auto w-75">
-							<iframe
-								style="position: absolute; width: 100%; height: 100%; top: 0; left: 0; border: none;"
-								src="https:&#x2F;&#x2F;www.canva.com&#x2F;design&#x2F;DAFh8MgCDJo&#x2F;view?embed"></iframe>
-						</div>
-					<p>En caso de padecer alguna alergia o intolerancia por favor pongase en contacto con nosotros para así poder modificar el menú</p>
-					</div>
-
-
+						calidad de producto impecable. Si usted sufre alguna
+						intolerancia o alergia, no dude en informarnos.</p>
 
 				</div>
 			</div>
 		</div>
+		<div class="container">
+			<div class="row">
+				<div class="col text-center">
+					<div style="width: 50%;">
+						<div style="">
+							<iframe class="iframe" loading="lazy"
+								style="position: absolute; width: 50%; height: 50%; top: 50; left: 0; border: none; margin-top: 5px; margin-left: 25%; margin-bottom: 50%;"
+								src="https:&#x2F;&#x2F;www.canva.com&#x2F;design&#x2F;DAFh8MgCDJo&#x2F;view?embed"
+								allowfullscreen="allowfullscreen" allow="fullscreen"> </iframe>
 
-		<br> <br> <br> <br>
+						</div>
+					</div>
+				</div>
+
+			</div>
+
+		</div>
 	</header>
 	<!-- Footer -->
 	<footer class="text-center text-lg-start bg-white text-muted">

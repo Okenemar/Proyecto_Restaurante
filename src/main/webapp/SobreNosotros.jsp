@@ -114,8 +114,8 @@ body {
 			</div>
 		</div>
 		<div class="container">
-			<table class="table">
-				<tr>
+			<table class="table" >
+				<tr style="display:flex; flex-wrap: wrap">
 					<td><img
 						src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/12/62/fd/a5/el-peine-de-los-vientos.jpg?w=700&h=500&s=1"
 						alt="Foto 1">
