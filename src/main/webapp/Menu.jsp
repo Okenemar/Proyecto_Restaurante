@@ -57,7 +57,7 @@ body {
 <body>
 	<!-- Barra de navegación -->
 	<nav class="navbar navbar-expand-lg navbar-light bg-light">
-		<a class="navbar-brand" href="PaginaInicialCliente.jsp">Herrero
+		<a class="navbar-brand" href="PaginaInicialCliente.jsp" style="margin-left:10px;">Herrero
 			Martinez</a>
 		<button class="navbar-toggler" type="button" data-toggle="collapse"
 			data-target="#navbarNav" aria-controls="navbarNav"
@@ -76,7 +76,7 @@ body {
 				</li>
 				<li class="nav-item"><a class="nav-link" href="Eventos.jsp">Eventos
 						y promociones</a></li>
-				<li class="nav-item"><a class="nav-link" href="#location">Ubicación
+				<li class="nav-item"><a class="nav-link" href="Ubicacion.jsp">Ubicación
 						y horarios</a></li>
 				<li class="nav-item"><a href="LoginEmpleado" class="nav-link">Log
 						in</a></li>

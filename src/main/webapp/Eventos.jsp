@@ -22,7 +22,6 @@ body {
 	color: white;
 }
 
-
 .navbar {
 	overflow: hidden;
 	position: fixed; /* Set the navbar to fixed position */
@@ -47,6 +46,7 @@ body {
 .card {
 	position: relative;
 	overflow: hidden;
+	margin-top: 20px;
 }
 
 .card-overlay {
@@ -77,8 +77,8 @@ body {
 <body>
 	<!-- Barra de navegación -->
 	<nav class="navbar navbar-expand-lg navbar-light bg-light">
-		<a class="navbar-brand" href="PaginaInicialCliente.jsp">Herrero
-			Martinez</a>
+		<a class="navbar-brand" href="PaginaInicialCliente.jsp"
+			style="margin-left: 10px;">Herrero Martinez</a>
 		<button class="navbar-toggler" type="button" data-toggle="collapse"
 			data-target="#navbarNav" aria-controls="navbarNav"
 			aria-expanded="false" aria-label="Toggle navigation">
@@ -96,7 +96,7 @@ body {
 				</li>
 				<li class="nav-item"><a class="nav-link" href="Eventos.jsp">Eventos
 						y promociones</a></li>
-				<li class="nav-item"><a class="nav-link" href="#location">Ubicación
+				<li class="nav-item"><a class="nav-link" href="Ubicacion.jsp">Ubicación
 						y horarios</a></li>
 				<li class="nav-item"><a href="LoginEmpleado" class="nav-link">Log
 						in</a></li>
@@ -126,8 +126,8 @@ body {
 						el lugar perfecto para celebrar tus momentos más importantes.</p>
 				</div>
 			</div>
-		</div>
-		<div class="container">
+		
+		
 			<div class="row">
 				<div class="col-md-6">
 					<div class="card">
@@ -135,45 +135,82 @@ body {
 							src="https://s1.1zoom.me/b5050/145/350089-admin_1920x1080.jpg"
 							alt="Imagen de ejemplo">
 						<div class="card-overlay">
-							<p class="card-text text-center">En nuestro restaurante, ofrecemos una
-								experiencia única y memorable para su boda. Contamos con un
-								equipo de expertos en eventos que se encargará de cada detalle
-								para asegurarnos de que su día especial sea perfecto. Ofrecemos
-								opciones de menú personalizadas para satisfacer los gustos y
-								necesidades de todos sus invitados.</p>
+							<div class="row">
+								<div class="col-md-12 text-center">
+									<h1>BODAS</h1>
+									<p class="card-text text-center">En nuestro restaurante,
+										ofrecemos una experiencia única y memorable para su boda.
+										Contamos con un equipo de expertos en eventos que se encargará
+										de cada detalle para asegurarnos de que su día especial sea
+										perfecto. Ofrecemos opciones de menú personalizadas para
+										satisfacer los gustos y necesidades de todos sus invitados.</p>
+								</div>
+							</div>
+
 						</div>
 					</div>
 				</div>
 				<div class="col-md-6">
 					<div class="card">
 						<img class="card-img-top"
-							src="https://tienda.mievento360.com/wp-content/uploads/2020/03/Disen%CC%83o-sin-ti%CC%81tulo-56.jpg"
+							src="https://grupo1844.com/wp-content/uploads/2022/09/slider-transporte-cenas-empresa.jpg"
 							alt="Imagen de ejemplo">
 						<div class="card-overlay">
-							<p class="card-text text-center">Celebre la Primera Comunión de su hijo o
-								hija en nuestro restaurante y disfrute de una experiencia
-								inolvidable. Nos aseguraremos de que el día de su hijo o hija
-								sea especial y memorable al ofrecer opciones de menú adaptadas a
-								las necesidades de los más pequeños y a sus invitados adultos.</p>
+							<div class="row">
+								<div class="col-md-12 text-center">
+									<h1>CENA EMPRESA</h1>
+									<p class="card-text text-center">En nuestro restaurante,
+										ofrecemos la opción perfecta para su evento de fin de año.
+										Nuestras cenas de empresa son la forma ideal para celebrar el
+										éxito de su empresa y disfrutar de una deliciosa comida en un
+										ambiente relajado y acogedor.</p>
+								</div>
+							</div>
 						</div>
 					</div>
 				</div>
 				<div class="col-md-6">
 					<div class="card">
 						<img class="card-img-top"
-							src="https://cdn.businessinsider.es/sites/navi.axelspringer.es/public/media/image/2022/03/primera-comunion-2661919.jpg"
+							src="https://migueldomecq.com/wp-content/uploads/2022/03/Que-incluye-una-cata-de-vino-en-Jerez.-En-que-consiste.jpg"
 							alt="Imagen de ejemplo">
 						<div class="card-overlay">
-							<p class="card-text text-center">Celebre la Primera Comunión de su hijo o
-								hija en nuestro restaurante y disfrute de una experiencia
-								inolvidable. Nos aseguraremos de que el día de su hijo o hija
-								sea especial y memorable al ofrecer opciones de menú adaptadas a
-								las necesidades de los más pequeños y a sus invitados adultos.</p>
+							<div class="row">
+								<div class="col-md-12 text-center">
+									<h1>CATA VINOS</h1>
+									<p class="card-text text-center">¿Eres un amante del vino y
+										quieres descubrir nuevos sabores y aromas? En nuestro
+										restaurante ofrecemos experiencias de cata de vinos para que
+										puedas disfrutar de una selección de los mejores vinos de la
+										región.</p>
+								</div>
+							</div>
+						</div>
+					</div>
+					</div>
+					<div class="col-md-6">
+						<div class="card">
+							<img class="card-img-top"
+								src="https://cdn.businessinsider.es/sites/navi.axelspringer.es/public/media/image/2022/03/primera-comunion-2661919.jpg"
+								alt="Imagen de ejemplo">
+							<div class="card-overlay">
+								<div class="row">
+									<div class="col-md-12 text-center">
+										<h1>COMUNION</h1>
+										<p class="card-text text-center">Celebre la Primera
+											Comunión de su hijo o hija en nuestro restaurante y disfrute
+											de una experiencia inolvidable. Nos aseguraremos de que el
+											día de su hijo o hija sea especial y memorable al ofrecer
+											opciones de menú adaptadas a las necesidades de los más
+											pequeños y a sus invitados adultos.</p>
+									</div>
+								</div>
+							</div>
 						</div>
 					</div>
 				</div>
 			</div>
-		</div>
+		
 
 
 		<br> <br> <br> <br>
